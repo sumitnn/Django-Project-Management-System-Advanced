@@ -11,14 +11,14 @@
 
 
 <!-- Upload Page -->
-<div class="container card-0 justify-content-center ">
+<div class="container card-0 justify-content-center">
     <div class="card-body px-sm-4 px-0">
         <div class="row justify-content-center mb-5">
             <div class="col-md-10 col">
-                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Upload New Project </h3>
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Create New Project </h3>
                 <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Entrust with heigh professionalism we are
-                    offering pixel perfect web and mobile application development third party integration and solution
-                    to our.</p>
+                    offering pixel perfect web </p>
+                {{data}}
             </div>
         </div>
         <div class="row justify-content-center round">
@@ -27,61 +27,56 @@
                     <div class="card-body inner-card">
                         <div class="row justify-content-center">
                             <div class="col-lg-5 col-md-6 col-sm-12">
-                                <div class="form-group"><label for="first-name">First Name</label><input type="text"
-                                        class="form-control" id="first-name" placeholder="Type your Name"> </div>
-                                <div class="form-group"> <label for="Mobile-Number">Last Name</label> <input type="text"
-                                        class="form-control" id="Mobile-Number" placeholder=""> </div>
-                                <div class="form-group"> <label for="phone">Email</label> <input type="email"
-                                        class="form-control" id="email" placeholder=""> </div>
-                                <div class="form-group"> <label for="last-name">Mobile</label> <input type="text"
-                                        class="form-control" id="last-name" placeholder=""> </div>
+                                <div class="form-group"><label for="ptitle">Title</label><input type="text"
+                                        class="form-control" id="ptitle" name="ptitle"
+                                        placeholder="Type Your Project Title"> </div>
 
-
-                                <div class="form-group"> <label for="time">Maximum time for the project</label> <input
-                                        type="text" class="form-control" id="time" placeholder=""> </div>
 
                             </div>
                             <div class="col-lg-5 col-md-6 col-sm-12">
+                                <div class="form-group"><label for="pimage">Project Banner</label><input type="file"
+                                        class="form-control" id="pimage" name="pimage">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-md-6 col-sm-12">
                                 <div class="form-group"> <label for="inputEmail4">Project Type</label> <select
-                                        class="form-control">
+                                        class="form-control" name="ptype">
                                         <option>Web Design</option>
                                         <option>Blockchain</option>
                                         <option>App Development</option>
                                         <option>Python</option>
                                         <option>Machine Learning</option>
                                     </select> </div>
-                                <div class="form-group"><label for="skill">Language Use</label> <input type="text"
-                                        class="form-control" id="skill" placeholder=""> </div>
-                                <div class="form-group"> <label for="Evaluate Budget">Team Name</label> <input
-                                        type="text" class="form-control" id="Evaluate Budget" placeholder="Optional">
-                                </div>
+
                                 <div class="form-group"> <label for="Company-Name">Member List</label> <input
                                         type="text" class="form-control" id="Company-Name" placeholder="Optional">
                                 </div>
-                                <div class="form-group"> <label for="inputEmail4">Country</label> <select
-                                        class="form-control">
-                                        <option>India</option>
-                                        <option>China</option>
-                                        <option>UK</option>
-                                    </select></div>
+
                             </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-md-12 col-lg-10 col-12">
-                                <div class="form-group files"><label class="my-auto">Upload Your File </label> <input
-                                        id="file" type="file" class="form-control" /></div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-md-12 col-lg-10 col-12">
-                                <div class="form-group"> <label for="exampleFormControlTextarea2">Description</label>
-                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2"
-                                        rows="5"></textarea>
+
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12">
+                                    <div class="form-group files"><label class="my-auto">Upload Project File </label>
+                                        <input id="file" type="file" name="pimage" class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="row justify-content-end mb-5">
-                                    <div class="col-lg-4 col-auto "><button type="button"
-                                            class="btn btn-primary btn-block"><small class="font-weight-bold">Request to
-                                                Upload</small></button> </div>
+                            </div>
+
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12">
+                                    <div class="form-group"> <label
+                                            for="exampleFormControlTextarea2">Description</label>
+                                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2"
+                                            rows="20" name="pdescription"></textarea>
+                                    </div>
+                                    <div class="row justify-content-end mb-5">
+                                        <div class="col-lg-4 col-auto "><button type="button"
+                                                class="btn btn-primary btn-block"><small class="font-weight-bold">
+                                                    Upload Project</small></button> </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -90,19 +85,18 @@
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
-<!-- Script -->
-{% block js %}
-<script>
-    $(document).ready(function () {
-        $(".files").attr('data-before', "Drag file here or click the above button");
-        $('input[type="file"]').change(function (e) {
-            var fileName = e.target.files[0].name;
-            $(".files").attr('data-before', fileName);
+    {% endblock %}
+    <!-- Script -->
+    {% block js %}
+    <script>
+        $(document).ready(function () {
+            $("#file").attr('data-before', "Drag file here or click the above button");
+            $('input[type="file"]').change(function (e) {
+                var fileName = e.target.files[0].name;
+                $(".files").attr('data-before', fileName);
 
+            });
         });
-    });
 
-</script>
-{% endblock %}
+    </script>
+    {% endblock %}

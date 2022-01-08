@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 # from django.contrib.auth.forms import UserCreationForm
 from .forms import SignupForm
+from .models import Project
 
 
 # Create your views here.
@@ -14,7 +15,9 @@ def profile(request):
 
 
 def upload(request):
-    return render(request, "users/upload.html")
+    context = {}
+    context['data'] = Project()
+    return render(request, "users/upload.html", context)
 
 
 def signup(request):
