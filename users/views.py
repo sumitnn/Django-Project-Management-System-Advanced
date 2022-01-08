@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 # from django.contrib.auth.forms import UserCreationForm
-from .forms import SignupForm
+from .forms import SignupForm, ProjectForm
 from .models import Project
 
 
@@ -16,7 +16,29 @@ def profile(request):
 
 def upload(request):
     context = {}
-    context['data'] = Project()
+    if request.method == "POST":
+        User = get_user_model()
+        u = User.objects.get(username=request.user)
+        title = request.POST.get('title')
+        project_img = request.POST.get('project_img')
+        project_type = request.POST.get('project_type')
+        notes = request.POST.get('notes')
+        project_file = request.POST.get('project_file')
+        description = request.POST.get('description')
+        print(u.id)
+        print(u)
+        instance = Project(user=u, title=title, project_img=project_img,
+                           project_type=project_type, notes=notes, project_file=project_file, description=description)
+
+        if instance is not None:
+            instance.save()
+            return redirect("home")
+
+        else:
+            print("failed")
+
+    context['form'] = ProjectForm(label_suffix=" ")
+
     return render(request, "users/upload.html", context)
 
 
