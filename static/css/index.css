@@ -1,0 +1,122 @@
+.profile .card{
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.profile .card:hover{
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.emoji{
+	color: black;
+}
+.emoji:hover{
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.emoji2:hover{
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.profile-icon{
+	color: black;
+}
+.profile-icon a{
+	text-decoration: none;
+	color: black;
+}
+.profile-icon:hover{
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.dot{
+	margin-left: 90%; 
+	margin-top: -10%;
+	
+}
+
+
+
+
+@media(max-width: 1400px){
+	.profile-icon a{
+		display: none;
+	}
+}
+
+@media (max-width: 990px) { 
+	.friend-box{
+		display: none;
+	}
+	.friend-box-extra{
+		display: none;
+	}
+
+	.profile{
+		width: 140%;
+	}
+
+ }
+
+
+ @media (max-width: 767px) { 
+	.team{
+		display: none;
+	}
+	.friend-box{
+		display: none;
+	}
+	.friend-box-extra{
+		display: none;
+	}
+	.emoji{
+		margin-left: 15%;
+	}
+	.profile{
+		width: auto;
+		padding: 20px;
+		margin: 15px 15px;
+	}
+	.card-text-1{
+		display: none;
+	}
+	.card-text{
+		font-size: 14px;
+		margin-left: 1px;
+	}
+	.card-title{
+		margin-top: -30px;
+		font-size: 13px;
+		font-weight: 800;
+	}
+	.maintext h5,p{
+		margin-left: 75px;
+		margin-top: -60px;
+	}
+	img{
+		height: 200px;
+		width: 200px;
+		margin: auto;
+
+	}
+	.message{
+		display: none;
+	}
+	.icons{
+		margin-left: 20px;
+
+	}.imagemain{
+		margin-left: 20px;
+	}
+	.profile-icon{
+		display: block;
+	}
+
+
+ }
+@media (max-width: 767px) { 
+	.icon{
+		margin-left: 20px;
+	}
+}
+

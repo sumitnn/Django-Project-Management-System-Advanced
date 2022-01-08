@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-lg navbar-light  fixed-top"
+    style="background-color:  #f2f2f2; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+    <div class="container-fluid">
+        {% load static %}
+        <img class="navbar-brand " src="{% static 'projectimages/logo.png' %}"
+            style="margin-top: 1px; height:60px; width:100px;" />
+        <div class="profile-icon">
+            <a href={% url "profile" %}><i class="fas fa-user-circle"
+                    style="font-size: 25px; margin-right: 25px;"></i></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link navbar-brand active" href={% url "home" %}><b>
+                            <h2 style="margin-top: 6px;">Project Management </h2>
+                        </b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-center" aria-current="page" href="#"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                        </svg><br>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" aria-current="page" href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-cast" viewBox="0 0 16 16">
+                            <path
+                                d="m7.646 9.354-3.792 3.792a.5.5 0 0 0 .353.854h7.586a.5.5 0 0 0 .354-.854L8.354 9.354a.5.5 0 0 0-.708 0z" />
+                            <path
+                                d="M11.414 11H14.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-13a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h3.086l-1 1H1.5A1.5 1.5 0 0 1 0 10.5v-7A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v7a1.5 1.5 0 0 1-1.5 1.5h-2.086l-1-1z" />
+                        </svg><br>Projects
+                    </a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" aria-current="page" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" fill="currentColor" class="bi bi-file-person" viewBox="0 0 16 16">
+                            <path
+                                d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
+                            <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg><br>About
+                    </a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" aria-current="page" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" fill="currentColor" class="bi bi-blockquote-left" viewBox="0 0 16 16">
+                            <path
+                                d="M2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm5 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm-5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm.79-5.373c.112-.078.26-.17.444-.275L3.524 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282c.024-.203.065-.37.123-.498a1.38 1.38 0 0 1 .252-.37 1.94 1.94 0 0 1 .346-.298zm2.167 0c.113-.078.262-.17.445-.275L5.692 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282a1.75 1.75 0 0 1 .118-.492c.058-.13.144-.254.257-.375a1.94 1.94 0 0 1 .346-.3z" />
+                        </svg><br>Blog
+                    </a>
+                </li>
+                <li class="nav-item dropdown text-center">
+                    <a class="nav-link dropdown-toggle" aria-current="page" id="navbarDropdown" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-angle-double-down"></i><br>
+                        More..
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href={% url "profile" %}><i
+                                    class="fas fa-user-circle"></i>&nbsp;&nbsp;&nbsp;Profile</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-comment-alt"></i>&nbsp;&nbsp;
+                                Messages</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href={% url "logout" %}><i
+                                    class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- <form class="d-flex">
+                <a href="#"><i class="fas fa-user-circle emoji" style="font-size: 25px; margin: 5px 20px;"></i></a>
+                <a class="btn btn-outline-success me-2" type="submit">Login</a>
+                <a class="btn btn-outline-danger me-2" type="submit">Logout</a>
+                <a class="btn btn-outline-primary me-2" type="submit">SignUp</a>
+
+            </form> -->
+        </div>
+    </div>
+</nav>

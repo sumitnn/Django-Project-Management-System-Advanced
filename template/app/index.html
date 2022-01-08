@@ -1,0 +1,311 @@
+{%extends 'app/Base.html'%}
+{%block title%}PMS::Home{%endblock%}
+{% load static %}
+{%block css%}
+<link rel="stylesheet" type="text/css" href={% static "css/index.css" %}>
+{%endblock%}
+
+
+{% block body %}
+<!-- navbar  -->
+{% include "app/include/navbar.html" %}
+
+<div class="row profile" style="margin-top: 100px;">
+  <div class="col-md-1"></div>
+  <!-- Start main page -->
+  <div class="col-md-7">
+    <div class="card ">
+      <div class="row main" style="margin-top: 8px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-1 imagemain">
+          <img src="images/ap.jpg" style="height: 60px; width: 60px; border-radius: 50%;">
+        </div>
+        <div class="col-md-4 maintext" style="margin-left: 20px;">
+          <h5 class="h5"><b>Arpit Pandeya</b></h5>
+          <p class="p" style="color: gray;">Python Developer</p>
+        </div>
+        <div class="col-md-6"></div>
+        <!-- <div class="col-md-1" style="margin-left: 90%; margin-top: -10%; cursor: pointer; font-size: 20px;">...</div> -->
+      </div>
+
+      <div class="card-body row mainCard">
+        <div class="col-md-1"></div>
+        <!-- image -->
+        <div class="col-md-10">
+          <div class="row g-0">
+            <div class="col-md-7">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                  additional content. This content is a little bit longer.</p>
+                <p class="card-text-1"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <img src="images/upload.png" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <hr>
+      <!-- like vaghre -->
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6 icons">
+          <a href="#"><i class="fas fa-fire-alt emoji" style="font-size: 25px; margin-left: 5px;"></i></a>
+          <a href="#"><i class="far fa-comments emoji" style="font-size: 25px;margin-left: 15px;"></i></a>
+          <a href="#"><i class="fas fa-share emoji" style="font-size: 25px; margin-left: 20px;"></i></a>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 team">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+        </div>
+
+      </div>
+      <div class="row message">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+          <input type="text" placeholder="add comment..." class="form-control"
+            style="height: 30px; margin-top: 15px; border-top: none; border-left: none; border-right: none;">
+        </div>
+        <div class="col-md-2 message">
+          <a href="#"><i class="fab fa-telegram-plane emoji2" style="font-size: 35px; margin-top: 8px;"></i></a>
+        </div>
+
+      </div>
+      <br>
+    </div>
+
+
+    <br>
+    <div class="card ">
+      <div class="row main" style="margin-top: 8px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-1 imagemain">
+          <img src="images/ap.jpg" style="height: 60px; width: 60px; border-radius: 50%;">
+        </div>
+        <div class="col-md-4 maintext" style="margin-left: 20px;">
+          <h5 class="h5"><b>Arpit Pandeya</b></h5>
+          <p class="p" style="color: gray;">Python Developer</p>
+        </div>
+        <div class="col-md-6"></div>
+        <!-- <div class="col-md-1" style="margin-left: 90%; margin-top: -10%; cursor: pointer; font-size: 20px;">...</div> -->
+      </div>
+
+      <div class="card-body row mainCard">
+        <div class="col-md-1"></div>
+        <!-- image -->
+        <div class="col-md-10">
+          <div class="row g-0">
+            <div class="col-md-7">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                  additional content. This content is a little bit longer.</p>
+                <p class="card-text-1"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <img src="images/upload.png" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <hr>
+      <!-- like vaghre -->
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6 icons">
+          <a href="#"><i class="fas fa-fire-alt emoji" style="font-size: 25px; margin-left: 5px;"></i></a>
+          <a href="#"><i class="far fa-comments emoji" style="font-size: 25px;margin-left: 15px;"></i></a>
+          <a href="#"><i class="fas fa-share emoji" style="font-size: 25px; margin-left: 20px;"></i></a>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 team">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+        </div>
+
+      </div>
+      <div class="row message">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+          <input type="text" placeholder="add comment..." class="form-control"
+            style="height: 30px; margin-top: 15px; border-top: none; border-left: none; border-right: none;">
+        </div>
+        <div class="col-md-2 message">
+          <a href="#"><i class="fab fa-telegram-plane emoji2" style="font-size: 35px; margin-top: 8px;"></i></a>
+        </div>
+
+      </div>
+      <br>
+    </div>
+    <br>
+    <div class="card ">
+      <div class="row main" style="margin-top: 8px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-1 imagemain">
+          <img src="images/ap.jpg" style="height: 60px; width: 60px; border-radius: 50%;">
+        </div>
+        <div class="col-md-4 maintext" style="margin-left: 20px;">
+          <h5 class="h5"><b>Arpit Pandeya</b></h5>
+          <p class="p" style="color: gray;">Python Developer</p>
+        </div>
+        <div class="col-md-6"></div>
+        <!-- <div class="col-md-1" style="margin-left: 90%; margin-top: -10%; cursor: pointer; font-size: 20px;">...</div> -->
+      </div>
+
+      <div class="card-body row mainCard">
+        <div class="col-md-1"></div>
+        <!-- image -->
+        <div class="col-md-10">
+          <div class="row g-0">
+            <div class="col-md-7">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                  additional content. This content is a little bit longer.</p>
+                <p class="card-text-1"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <img src="images/upload.png" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <hr>
+      <!-- like vaghre -->
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6 icons">
+          <a href="#"><i class="fas fa-fire-alt emoji" style="font-size: 25px; margin-left: 5px;"></i></a>
+          <a href="#"><i class="far fa-comments emoji" style="font-size: 25px;margin-left: 15px;"></i></a>
+          <a href="#"><i class="fas fa-share emoji" style="font-size: 25px; margin-left: 20px;"></i></a>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 team">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+        </div>
+
+      </div>
+      <div class="row message">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+          <input type="text" placeholder="add comment..." class="form-control"
+            style="height: 30px; margin-top: 15px; border-top: none; border-left: none; border-right: none;">
+        </div>
+        <div class="col-md-2 message">
+          <a href="#"><i class="fab fa-telegram-plane emoji2" style="font-size: 35px; margin-top: 8px;"></i></a>
+        </div>
+
+      </div>
+      <br>
+    </div>
+
+  </div>
+
+
+  <!-- End main page -->
+
+
+  <!-- Start Friends -->
+  <div class="col-md-3 friend-box">
+    <div class="card text-center position-fixed friend-box-extra">
+      <p style="font-size: 14px; margin-right: 80px; margin-top: 15px;">Add more friends...</p>
+      <!-- serch button -->
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="input-group rounded">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <!-- clost search button -->
+      <div class="card-body">
+        <div class="row" style="margin-top: 5px;">
+          <div class="col-md-3">
+            <img src="images/ap.jpg" style="height: 50px; width: 50px; border-radius: 50%;">
+          </div>
+          <div class="col-md-9">
+            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Arpit Pandeya</p>
+            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">Python Developer</p>
+          </div>
+        </div>
+        <!-- close side image -->
+        <!-- side image -->
+        <div class="row" style="margin-top: 5px;">
+          <div class="col-md-3">
+            <img src="images/sumit.jpg" style="height: 50px; width: 50px; border-radius: 50%;">
+          </div>
+          <div class="col-md-9">
+            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Sumit Nautiyal</p>
+            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">Python Developer</p>
+          </div>
+        </div>
+        <!-- close side image -->
+
+        <!-- side image -->
+        <div class="row" style="margin-top: 5px;">
+          <div class="col-md-3">
+            <img src="images/uday.jpg" style="height: 50px; width: 50px; border-radius: 50%;">
+          </div>
+          <div class="col-md-9">
+            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Uday kapoor</p>
+            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">Python Developer</p>
+          </div>
+        </div>
+        <!-- close side image -->
+        <!-- side image -->
+        <div class="row" style="margin-top: 5px;">
+          <div class="col-md-3">
+            <img src="images/deepak.jpg" style="height: 50px; width: 50px; border-radius: 50%;">
+          </div>
+          <div class="col-md-9">
+            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Deepak Maletha</p>
+            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">Python Developer</p>
+          </div>
+        </div><br>
+        <!-- see more link -->
+        <div>
+          <a href="#" style="color: gray; margin-left: 70px;">See more...</a>
+        </div>
+        <!-- see more end -->
+        <!-- close side image -->
+      </div>
+    </div>
+    <br>
+    <div class="position-fixed" style="margin-top: 400px;">
+      <a href="#" style="color: black; text-decoration: none;">Trending Post</a><br>
+      <a href="#">#python</a>
+      <a href="#">#ML</a>
+      <a href="#">#AI</a>
+      <a href="#">#WebDevelopment</a>
+      <a href="#">#AppDevelopment</a>
+    </div>
+
+
+
+  </div>
+  <!-- End friends -->
+  <div class="col-md-1"></div>
+</div>
+
+{% endblock %}

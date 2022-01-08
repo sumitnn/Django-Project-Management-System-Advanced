@@ -1,0 +1,131 @@
+{%extends 'common/Base.html'%}
+{%block title%}profile Page{%endblock%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{%static 'css/registration.css'%}" />
+{%endblock%}
+{%block body%}
+
+<section class="h-100 h-custom" style="background-color: #e6f0ff;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Edit Details</h3>
+
+            <form action="" method="POST" class="px-md-2" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <div class="form-outline mb-4">
+                <input type="text" name="fullname" id="form3Example1q" value={{data.fullname}} class="form-control" />
+                <label class="form-label" for="form3Example1q"> Full Name</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="file" name="picture" id="form3Example1q" class="form-control" />
+
+                <label class="form-label" for="form3Example1q">Picture</label>
+              </div>
+
+              <div class="row">
+
+
+                <div class="col-md-6 mb-4">
+                  <input type="text" name="username" id="form3Example1q" value={{data.username}} class="form-control" />
+                  <label class="form-label" for="form3Example1q">User Name</label>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+
+                <div class="col-md-6 mb-4">
+                  <input type="email" name="email" id="form3Example1q" value={{data.email}} class="form-control" />
+                  <label class="form-label" for="form3Example1q">Email</label>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <select name="profession" value={{data.profession}} class="select form-control">
+                    <option disabled>Profession</option>
+                    <option>Web Developer</option>
+                    <option>Web Designer</option>
+                    <option>Python Developer</option>
+                    <option>Web Developer</option>
+                    <option>Web Designer</option>
+                    <option>Frontend Developer</option>
+                    <option>Backend Developer</option>
+                  </select>
+                  <label class="form-label" for="form3Example1q">Profession</label>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline datepicker">
+                    <input type="number" name="mobile" value={{data.mobile}} class="form-control"
+                      id="exampleDatepicker1" />
+                    <label for="exampleDatepicker1" class="form-label">Mobile Number</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline datepicker">
+                    <select name="gender" value={{data.gender}} class="select form-control">
+                      <option disabled>Gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+
+                    </select>
+                    <label for="exampleDatepicker1" class="form-label">Gender</label>
+                  </div>
+
+                </div>
+              </div>
+
+
+
+              <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                <div class="col-md-6">
+                  <div class="form-outline">
+                    <select name="course" value={{data.course}} class="select form-control">
+                      <option disabled>Course</option>
+                      <option value="bscit">BSc IT</option>
+                      <option value="bca">BCA</option>
+                    </select>
+                    <label class="form-label" for="form3Example1w">Course</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-outline">
+                    <input type="date" name="year" id="form3Example1w" value={{data.year}}
+                      class="form-control" />{{data.year}}
+                    <label class="form-label" for="form3Example1w">Year</label>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="form-outline mb-4">
+                <textarea name="address" class="form-control">{{data.address}}</textarea>
+                <label class="form-label" for="form3Example1q">Address</label>
+              </div>
+
+              <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%endblock%}

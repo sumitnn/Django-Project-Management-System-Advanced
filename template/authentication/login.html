@@ -1,0 +1,46 @@
+{% extends 'authentication/Base.html' %}
+{% load static %}
+{% block title %}
+PMS:: Login
+{% endblock %}
+{% block content %}
+<!-- WRAPPER -->
+<div class="card">
+    <div class="header">
+        <p class="lead">Log In</p>
+    </div>
+    <div class="body">
+        <form class="form-auth-small" method="POST">
+
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <div class="form-group">
+                <label for="signin-email" class="control-label sr-only">Username</label>
+                <input type="text" class="form-control" id="signin-email" value="" name="username"
+                    placeholder="User Name">
+            </div>
+            <div class="form-group">
+                <label for="signin-password" class="control-label sr-only">Password</label>
+                <input type="password" class="form-control" id="signin-password" value="" name="password"
+                    placeholder="Password">
+            </div>
+            <div class="form-group clearfix">
+                <label class="fancy-checkbox element-left">
+                    <input type="checkbox">
+                    <span>Remember me</span>
+                </label>
+            </div>
+            {% if error %}
+            <small class="error-message"> {{error}}</small>
+            {%else%}
+            {%endif%}
+            <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+            <div class="bottom">
+                <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="">Forgot
+                        password?</a></span>
+                <span>Don't have an account? <a href="{% url 'signup'%}">Register</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END WRAPPER -->
+{% endblock %}

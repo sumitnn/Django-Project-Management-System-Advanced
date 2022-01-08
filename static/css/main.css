@@ -1,0 +1,25 @@
+/*.imge{
+	border: 1px solid black;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.details{
+	border: 1px solid black;
+	height: 200px;
+	width: 1100px;
+}*/
+.row .first .f3 p{
+	font-size: 13px;
+	text-align: center;
+}
+
+.card .extra{
+	text-align: center;
+}
+.extra .row{
+	 background: linear-gradient(to right, #ccccff 0%, #ffffff 60%);
+
+}
+

@@ -1,0 +1,349 @@
+{%extends 'common/Base.html'%}
+{%block title%}profile Page{%endblock%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}" />
+{%endblock%}
+{%block body%}
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-6 firstone">
+		<h2>
+			<center>The <u>All-in-One</u> Project Management Software</center>
+		</h2>
+		<hr style="color: #e6f2ff; height: 4px;">
+
+		<h5>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way
+			your team works is unique accomplish it all with Trello.</h5>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<a href="{% url 'login' %}" class="form-control btn btn-warning">LogIn</a><br>
+			</div>
+			<div class="col-md-4">
+				<a href="{% url 'signup' %}" class="form-control btn btn-outline-success"> Start Now</a><br>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+
+
+	</div>
+	<div class="col-md-3"></div>
+</div>
+
+<br>
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div class="second">
+			<h2>It’s more than work. It’s a way of working together.</h2>
+			<h5>Start with a The PMS, lists, and cards. Customize and expand with more features as your teamwork grows.
+				Manage projects, organize tasks, and build team spirit—all in one place.</h5>
+			<div class="row">
+				<div class="col-md-5"></div>
+				<div class="col-md-2">
+					<a href="{% url 'signup' %}" class="form-control btn btn-outline-primary">Start Doing</a>
+				</div>
+				<div class="col-md-5"></div>
+			</div><br><br>
+			<div class="imgbtn">
+				<img src="{% static 'images/sel.svg' %}">
+
+			</div>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+
+<div class="card">
+	<div class="card-body">
+		<h2>Oh wait, did we mention that The PMS is absolutely <i><b>free</b></i> ?</h2>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<p><b>That's right. Because we believe collaboration is for everyone, we've made our core features free,
+						so you can enjoy a more productive life no matter what you do!</b></p>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+
+	</div>
+</div>
+
+<br><br>
+
+
+
+<section class="portfolio section" id="portfolio">
+	<div class="container">
+		<h1><b>Feature's</b></h1>
+
+		<div class="row ">
+			<!-- portfolio items -->
+			<div class="portfolio-item padd-15" data-category="web-design">
+				<div class="portfolio-item-inner shadow-dark">
+					<div class="portfolio-img">
+						<img src=" {% static 'images/pf1.jpg' %} " alt="portfolio img">
+					</div>
+					<div class="portfolio-info">
+						<h4>Web Development</h4>
+						<div class="icon">
+							<i class="fas fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- portfolio item end -->
+			<!-- portfolio items -->
+			<div class="portfolio-item padd-15" data-category="photography">
+				<div class="portfolio-item-inner shadow-dark">
+					<div class="portfolio-img">
+						<img src="{% static 'images/pf2.jpg' %}" alt="portfolio img">
+					</div>
+					<div class="portfolio-info">
+						<h4>Frontend</h4>
+						<div class="icon">
+							<i class="fas fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- portfolio item end -->
+			<!-- portfolio items -->
+			<div class="portfolio-item padd-15" data-category="wordpress">
+				<div class="portfolio-item-inner shadow-dark">
+					<div class="portfolio-img">
+						<img src="{% static 'images/pf3.jpg' %}" alt="portfolio img">
+					</div>
+					<div class="portfolio-info">
+						<h4>Backend</h4>
+						<div class="icon">
+							<i class="fas fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- portfolio item end -->
+			<!-- portfolio items -->
+			<div class="portfolio-item padd-15" data-category="web-design">
+				<div class="portfolio-item-inner shadow-dark">
+					<div class="portfolio-img">
+						<img src="{% static 'images/pf4.jpg' %}" alt="portfolio img">
+					</div>
+					<div class="portfolio-info">
+						<h4>Python</h4>
+						<div class="icon">
+							<i class="fas fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- portfolio item end -->
+			<!-- portfolio items -->
+			<div class="portfolio-item padd-15" data-category="wordpress">
+				<div class="portfolio-item-inner shadow-dark">
+					<div class="portfolio-img">
+						<img src="{% static 'images/pf5.jpg' %}" alt="portfolio img">
+					</div>
+					<div class="portfolio-info">
+						<h4>Bootstrap</h4>
+						<div class="icon">
+							<i class="fas fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- portfolio item end -->
+			<!-- portfolio items -->
+			<div class="portfolio-item padd-15" data-category="web-design">
+				<div class="portfolio-item-inner shadow-dark">
+					<div class="portfolio-img">
+						<img src="{% static 'images/pf6.jpg' %}" alt="portfolio img">
+					</div>
+					<div class="portfolio-info">
+						<h4>Java</h4>
+						<div class="icon">
+							<i class="fas fa-search"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- portfolio item end -->
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5"></div>
+		<div class="col-md-2">
+			<button class="form-control btn-outline-primary">Get More</button>
+		</div>
+		<div class="col-md-5"></div>
+	</div>
+</section>
+
+<!-- Portfolio Section End -->
+
+
+
+<br><br><br><br>
+
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div class="blogname">
+			<h1>About us</h1>
+		</div>
+		<div class="container">
+
+			<div class="card" style="background-image: url( '/static/images/sumit.jpg' ); background-size: cover;">
+				<div class="content">
+					<h2 style="color: black;">02</h2>
+					<h3 style="color: black;">Sumit Nautiyal</h3>
+					<p style="color: black;">If you decide to go with the separate scripts solution, Popper must come
+						first (if you’re using tooltips or popovers), and then our JavaScript plugins.</p>
+					<a href="#">Read More</a>
+				</div>
+			</div>
+			<div class="card" style="background-image: url('/static/images/manjot.jpg'); background-size: cover;">
+				<div class="content">
+					<h2 style="color: black;">03</h2>
+					<h3 style="color: black;">Manjot Singh</h3>
+					<p style="color: black;">If you decide to go with the separate scripts solution, Popper must come
+						first (if you’re using tooltips or popovers), and then our JavaScript plugins.</p>
+					<a href="#">Read More</a>
+				</div>
+			</div>
+			<div class="card" style="background-image: url('/static/images/apu.jpg'); background-size: cover;">
+				<div class="content">
+					<h2 style="color: black;">04</h2>
+					<h3 style="color: black;">Arpit Pandeya</h3>
+					<p style="color: black;">If you decide to go with the separate scripts solution, Popper must come
+						first (if you’re using tooltips or popovers), and then our JavaScript plugins.</p>
+					<a href="#">Read More</a>
+				</div>
+			</div>
+			<div class="card" style="background-image: url('/static/images/deepak.jpg'); background-size: cover;">
+				<div class="content">
+					<h2 style="color: black;">01</h2>
+					<h3 style="color: black;">Deepak Maletha</h3>
+					<p style="color: black;">If you decide to go with the separate scripts solution, Popper must come
+						first (if you’re using tooltips or popovers), and then our JavaScript plugins.</p>
+					<a href="#">Read More</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+
+
+
+<div class="card">
+	<div class="card-body"><br>
+		<h2 class="card-title">Don't wait another day!</h2>
+		<p class="card-text">ThePMS gives unlimited storage for any number of projects to your whole team for free.</p>
+		<a href="{% url 'signup' %}" class="btn btn-success">Sign Up. It's Free</a><br><br>
+		<p>Already have an account? <a href="{% url 'login' %}">Login to ThePMS</a></p><br>
+	</div>
+</div>
+</div>
+
+
+<!-- Contact Page -->
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<!--Section: Contact v.2-->
+		<section class="mb-4">
+
+			<!--Section heading-->
+			<h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+			<!--Section description-->
+			<p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to
+				contact us directly. Our team will come back to you within
+				a matter of hours to help you.</p>
+
+			<div class="row">
+
+				<!--Grid column-->
+				<div class="col-md-9 mb-md-0 mb-5">
+					<form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+						<!--Grid row-->
+						<div class="row">
+
+							<!--Grid column-->
+
+						</div>
+						<!--Grid row-->
+
+						<!--Grid row-->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="md-form mb-0">
+									<input type="text" id="subject" name="subject" class="form-control">
+									<label for="subject" class="">Subject</label>
+								</div>
+							</div>
+						</div>
+						<!--Grid row-->
+
+						<!--Grid row-->
+						<div class="row">
+
+							<!--Grid column-->
+							<div class="col-md-12">
+
+								<div class="md-form">
+									<textarea type="text" id="message" name="message" rows="2"
+										class="form-control md-textarea"></textarea>
+									<label for="message">Your message</label>
+								</div>
+
+							</div>
+						</div>
+						<!--Grid row-->
+
+					</form>
+
+					<div class="text-center text-md-left">
+						<a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+					</div>
+					<div class="status"></div>
+				</div>
+				<!--Grid column-->
+
+				<!--Grid column-->
+				<div class="col-md-3 text-center">
+					<ul class="list-unstyled mb-0">
+						<li><i class="bi bi-geo-alt-fill" style="font-size: 2rem;"></i>
+							<p>Kargi Chowk, Dehradun, India</p>
+						</li>
+
+						<li><i class="bi bi-telephone-fill" style="font-size: 2rem;"></i>
+							<p>+91 952 836 7364</p>
+						</li>
+
+						<li><i class="bi bi-envelope-fill" style="font-size: 2rem;"></i></i>
+							<p>www.thepms.com</p>
+						</li>
+					</ul>
+				</div>
+				<!--Grid column-->
+
+			</div>
+
+		</section>
+		<!--Section: Contact v.2-->
+	</div>
+	<div class="col-md-2"></div>
+</div>
+
+
+{% endblock %}
+{%block js%}
+<script src={% static 'js/main.js' %}></script>
+{%endblock%}

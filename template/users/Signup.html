@@ -1,0 +1,46 @@
+{% extends 'authentication/Base.html' %}
+{% load static %}
+{% block title %}
+PMS:: Create Account
+{% endblock %}
+{% block css%}
+
+{%endblock%}
+{% block content %}
+<!-- WRAPPER -->
+<div class="card">
+    <div class="header">
+        <p class="lead">Create Account</p>
+    </div>
+    <div class="body">
+        <form class="form-auth-small" method="POST">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
+
+            {% for i in form %}
+            <div class="form-group">
+                {{i}}
+
+
+            </div>
+            {% endfor %}
+            {% if error %}
+            {{error}}
+            {%else%}
+            {%endif%}
+            <div class="form-group clearfix">
+                <label class="fancy-checkbox element-left">
+                    <input type="checkbox">
+                    <span>Show Password</span>
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Signup</button>
+            <div class="bottom">
+                <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="">Forgot
+                        password?</a></span>
+                <span>Already have a account? <a href="{%url 'login' %}">Login</a></span>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END WRAPPER -->
+{% endblock %}
