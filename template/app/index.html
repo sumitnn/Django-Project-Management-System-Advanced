@@ -39,14 +39,17 @@
           <div class="row g-0">
             <div class="col-md-7">
               <div class="card-body">
-                <h5 class="card-title">{{i.title}} <a><i class="fas fa-edit"></i></a></h5>
+
+                <h5 class="card-title">{{i.title}} <button type="button" data-bs-toggle="modal"
+                    data-bs-target="#project-detail-edit"><i class="fas fa-edit" id="dataid"
+                      data-pid="{{i.id}}"></i></button></h5>
                 <p class="card-text">{{i.description}}</p>
                 <p class="card-text-1"><small class="text-muted">Created at {{i.current_time}}</small></p>
 
               </div>
             </div>
             <div class="col-md-5">
-              <img src="{{i.project_img.url}}" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
+              <img src="{{i.project_img}}" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
             </div>
           </div>
         </div>
@@ -63,10 +66,10 @@
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-4 team">
-          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
-          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
-          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
-          <img src="images/ap.jpg" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
         </div>
 
       </div>
@@ -114,7 +117,7 @@
       <div class="card-body">
         <div class="row" style="margin-top: 5px;">
           <div class="col-md-3">
-            <img src="images/ap.jpg" style="height: 50px; width: 50px; border-radius: 50%;">
+            <img src="" style="height: 50px; width: 50px; border-radius: 50%;">
           </div>
           <div class="col-md-9">
             <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Arpit Pandeya</p>
@@ -125,7 +128,7 @@
         <!-- side image -->
         <div class="row" style="margin-top: 5px;">
           <div class="col-md-3">
-            <img src="images/sumit.jpg" style="height: 50px; width: 50px; border-radius: 50%;">
+            <img src="" style="height: 50px; width: 50px; border-radius: 50%;">
           </div>
           <div class="col-md-9">
             <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Sumit Nautiyal</p>
@@ -137,7 +140,7 @@
         <!-- side image -->
         <div class="row" style="margin-top: 5px;">
           <div class="col-md-3">
-            <img src="images/uday.jpg" style="height: 50px; width: 50px; border-radius: 50%;">
+            <img src="" style="height: 50px; width: 50px; border-radius: 50%;">
           </div>
           <div class="col-md-9">
             <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Uday kapoor</p>
@@ -179,5 +182,75 @@
   <!-- End friends -->
   <div class="col-md-1"></div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="project-detail-edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="#project-detail-edit-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- script home page  -->
+{% block js %}
+
+<script>
+  $(document).ready(function () {
+    $("#project-detail-edit").click(function () {
+
+      let output = '';
+      let id = document.getElementById("dataid").getAttribute("data-pid");
+      let url = `http://localhost:8000/api/projectdetail/${id}/`;
+      console.log(url);
+      $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (res) {
+          console.log(res);
+          output += `
+          <form method="post" action="/upload/" enctype="multipart/form-data">
+            <input type="hidden" name="csrfmiddlewaretoken" value={{ csrf_token }}>
+            <label for="id_title">Title </label>
+            <input type="text" name="title" class="form-control" value=${res['title']} maxlength="20" id="id_title">
+             
+               <label for="id_description">Description </label>
+    <input type="text" name="description" value=${res['description']} class="form-control" id="id_description">
+    
+              
+           
+             <input type="hidden" id="uuid" value=${res['id']} class="form-control">
+            <input type="button" value='update Task' onclick=""  class="btn btn-info">
+        </form>  `;
+          $("#project-detail-edit-body").append(output);
+
+
+        }
+      });
+
+
+
+
+    });
+  });
+
+
+
+
+
+</script>
 
 {% endblock %}
