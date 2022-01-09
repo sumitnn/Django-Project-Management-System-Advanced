@@ -16,6 +16,20 @@ def profile(request):
         u = User.objects.get(username=request.user)
         project = Project.objects.filter(user=u)
         context['pobj'] = project
+        context['puser'] = u.email
+    except:
+        return redirect("")
+
+    return render(request, "users/profile.html", context)
+
+
+def profile(request, id):
+    context = {}
+    try:
+        u = User.objects.get(username=request.user)
+        project = Project.objects.filter(user=u)
+        context['pobj'] = project
+        context['puser'] = u.email
     except:
         return redirect("")
 

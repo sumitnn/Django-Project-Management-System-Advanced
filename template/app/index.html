@@ -27,8 +27,9 @@
 
         </div>
         <div class="col-md-4 maintext" style="margin-left: 20px;">
-          <h5 class="h5"><b>{{i.user.username}}</b></h5>
-          <p class="p" style="color: gray;">{{i.user.bio}}</p>
+          <h5 class="h5 text-capitalize"><b><a href="{% url 'profile' i.user.id %}"
+                style="text-decoration:none;">{{i.user.username}}</a></b></h5>
+          <p class="p text-capitalize" style="color: gray;">{{i.user.bio}}</p>
 
 
         </div>
@@ -44,7 +45,7 @@
             <div class="col-md-7">
               <div class="card-body">
 
-                <h5 class="card-title">{{i.title}} <button type="button" data-bs-toggle="modal"
+                <h5 class="card-title text-capitalize">{{i.title}} <button type="button" data-bs-toggle="modal"
                     data-bs-target="#project-detail-edit"><i class="fas fa-edit" id="dataid"
                       data-pid="{{i.id}}"></i></button></h5>
                 <p class="card-text">{{i.description}}</p>
@@ -53,7 +54,17 @@
               </div>
             </div>
             <div class="col-md-5">
-              <img src="{{i.project_img}}" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
+              {% if i.project_img %}
+
+              <img src="{{i.project_img.url}}" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
+              {%else%}
+              <img src="{%static 'projectimages/xs/avatar1.jpg' %}"
+                class="img-fluid rounded-start d-flex justify-content-center" alt="...">
+
+
+              {%endif %}
+
+
             </div>
           </div>
         </div>
