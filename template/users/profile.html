@@ -18,17 +18,19 @@
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
               <div class="profile-img">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                  alt="" />
+                {% if request.user.profile_img %}
+                <img src="{{request.user.profile_img.url}}" alt="" />
+                {%else%}
+                <img src="{%static 'projectimages/xs/avatar1.jpg' %}" alt="" />
+                {%endif%}
                 <div class="file btn btn-lg btn-primary">
                   Change Photo
                   <input type="file" name="file" />
                 </div>
               </div>
               <div class="mt-3">
-                <h4>John Doe</h4>
-                <p class="text-secondary mb-1">Full Stack Developer</p>
+                <h4 class="text-capitalize">{{request.user.username}}</h4>
+                <p class="text-secondary mb-1">{{request.user.bio|default_if_none:"..Developer"}}</p>
                 <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                 <button class="btn btn-primary">Follow</button>
                 <button class="btn btn-outline-primary">Message</button>
@@ -99,18 +101,22 @@
 
       <div class="col-md-8">
 
-
+        {% for i in pobj %}
 
         <div class="card ">
           <div class="row main" style="margin-top: 8px; margin-left: 1px;">
             <div class="col-md-1 imagemain">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+              {% if i.user.profile_img %}
+              <img src="{{i.user.profile_img.url}}" style="height: 60px; width: 60px; border-radius: 50%;">
+              {% else%}
+              <img src="{%static 'projectimages/xs/avatar1.jpg' %}"
                 style="height: 60px; width: 60px; border-radius: 50%;">
+
+              {%endif%}
             </div>
             <div class="col-md-4 maintext" style="margin-left: 20px;">
-              <h5 class="h5"><b>Arpit Pandeya</b></h5>
-              <p class="p" style="color: gray;">Python Developer</p>
+              <h5 class="h5 text-capitalize"><b>{{i.user.username}}</b></h5>
+              <p class="p text-capitalize" style="color: gray;">{{i.user.bio}}</p>
             </div>
             <div class="col-md-7"></div>
           </div>
@@ -118,9 +124,10 @@
           <div class="card-body row mainCard">
             <!-- image -->
             <div class="col-md-12">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
+              <h5 class="card-title text-capitalize">{{i.title}}</h5>
+              <p class="card-text">{{i.description}}</p>
+              <p class="card-text-1"><small class="text-muted">Created at {{i.current_time}}</small></p>
+
             </div>
             <div class="col-md-12">
               <img
@@ -135,82 +142,10 @@
             <a href="#"><i class="fas fa-share emoji " style="font-size: 25px; margin-left: 35px;"></i></a>
           </div>
         </div>
-
-
         <br>
 
-        <div class="card ">
-          <div class="row main" style="margin-top: 8px; margin-left: 1px;">
-            <div class="col-md-1 imagemain">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                style="height: 60px; width: 60px; border-radius: 50%;">
-            </div>
-            <div class="col-md-4 maintext" style="margin-left: 20px;">
-              <h5 class="h5"><b>Arpit Pandeya</b></h5>
-              <p class="p" style="color: gray;">Python Developer</p>
-            </div>
-            <div class="col-md-7"></div>
-          </div>
+        {% endfor %}
 
-          <div class="card-body row mainCard">
-            <!-- image -->
-            <div class="col-md-12">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            </div>
-            <div class="col-md-12">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                class=" rounded mx-auto d-block" style="height: 200px; width: 200px;" alt="...">
-            </div>
-          </div>
-          <hr>
-          <div class="col-md-12">
-            <a href="#"><i class="fas fa-fire-alt emoji " style="font-size: 25px; margin-left: 5px;"></i></a>
-            <a href="#"><i class="fas fa-comment emoji " style="font-size: 25px; margin-left: 35px;"></i></a>
-            <a href="#"><i class="fas fa-share emoji " style="font-size: 25px; margin-left: 35px;"></i></a>
-          </div>
-        </div>
-
-
-        <br>
-
-        <div class="card ">
-          <div class="row main" style="margin-top: 8px; margin-left: 1px;">
-            <div class="col-md-1 imagemain">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                style="height: 60px; width: 60px; border-radius: 50%;">
-            </div>
-            <div class="col-md-4 maintext" style="margin-left: 20px;">
-              <h5 class="h5"><b>Arpit Pandeya</b></h5>
-              <p class="p" style="color: gray;">Python Developer</p>
-            </div>
-            <div class="col-md-7"></div>
-          </div>
-
-          <div class="card-body row mainCard">
-            <!-- image -->
-            <div class="col-md-12">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            </div>
-            <div class="col-md-12">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                class=" rounded mx-auto d-block" style="height: 200px; width: 200px;" alt="...">
-            </div>
-          </div>
-          <hr>
-          <div class="col-md-12">
-            <a href="#"><i class="fas fa-fire-alt emoji " style="font-size: 25px; margin-left: 5px;"></i></a>
-            <a href="#"><i class="fas fa-comment emoji " style="font-size: 25px; margin-left: 35px;"></i></a>
-            <a href="#"><i class="fas fa-share emoji " style="font-size: 25px; margin-left: 35px;"></i></a>
-          </div>
-        </div>
 
 
 

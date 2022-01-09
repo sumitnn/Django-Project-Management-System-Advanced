@@ -32,5 +32,5 @@ class ProjectForm(ModelForm):
             'project_type': TextInput(attrs={'class': 'form-control'}),
             'notes': TextInput(attrs={'class': 'form-control'}),
             'project_file': FileInput(attrs={'class': 'form-control'}),
-            'description': TextInput(attrs={'class': 'form-control'}),
+            'description': Textarea(attrs={'class': 'form-control'}),
         }

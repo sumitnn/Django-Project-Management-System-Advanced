@@ -11,7 +11,15 @@ User = get_user_model()
 
 
 def profile(request):
-    return render(request, "users/profile.html")
+    context = {}
+    try:
+        u = User.objects.get(username=request.user)
+        project = Project.objects.filter(user=u)
+        context['pobj'] = project
+    except:
+        return redirect("")
+
+    return render(request, "users/profile.html", context)
 
 
 def upload(request):

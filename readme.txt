@@ -6,17 +6,17 @@ admin(password)
 user1
 raj@gmail.com
 raj verma
-raj@123@
+xntkLDYm6l
 
 user2
 jon@gmail.com
 jonn cinna
-jon@123@
+xntkLDYm6l
 
 user3
 manju@gmail.com
-manju cuteness verma
-manju@123@
+manju 
+xntkLDYm6l
 
 
 

@@ -19,8 +19,11 @@ class ProjectDetail(APIView):
 
     def put(self, request, pk, format=None):
         try:
-            snippet = Project.objects.get(project_id=pk)
+            snippet = Project.objects.get(id=pk)
+
         except:
+            print("faled")
+
             return Response({"error": "No Data Found", "code": 0}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = ProjectSerializer(snippet, data=request.data)
@@ -31,7 +34,7 @@ class ProjectDetail(APIView):
 
     def delete(self, request, pk, format=None):
         try:
-            project = Project.objects.get(project_id=pk)
+            project = Project.objects.get(id=pk)
         except:
             return Response({"error": "No Data Found", "code": 0}, status=status.HTTP_404_NOT_FOUND)
         project.delete()
