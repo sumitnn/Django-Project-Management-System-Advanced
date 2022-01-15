@@ -39,8 +39,10 @@
                 <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                 {% if request.user.username == projecttuser %}
                 <a href="{% url 'profileedit' request.user.id %}" class="btn btn-outline-warning">Edit Profile</a>
-
-                <button type="button" class="btn btn-outline-danger">Delete Account</button>
+                <form method="POST" action="{% url 'profiledelete' request.user.id %}" style="display: inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-danger">Delete Account</button>
+                </form>
                 {%else%}
                 <button type="button" class="btn btn-outline-info">Follow</button>
                 <button type="button" class="btn btn-outline-warning">Message</button>

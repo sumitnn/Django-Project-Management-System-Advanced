@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
+
 from django.contrib.auth import get_user_model
 # from django.contrib.auth.forms import UserCreationForm
 from .forms import SignupForm, ProjectForm, UpdateProfileForm
@@ -84,8 +85,25 @@ def signup(request):
 
 def profileedit(request, id):
     context = {}
-
     u = User.objects.get(id=id)
+    if request.method == 'POST':
+        f = UpdateProfileForm(request.POST or None,
+                              request.FILES or None, instance=u)
+        if f.is_valid():
+            f.save()
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            return redirect("home")
     context['form'] = UpdateProfileForm
     context['formvalues'] = u
     return render(request, "users/Editprofile.html", context)
+
+
+def profiledelete(request, id):
+    if request.method == "POST":
+        u = User.objects.get(id=id)
+        u.delete()
+
+        return redirect("login")
+
+    return redirect("home")
