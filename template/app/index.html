@@ -27,7 +27,7 @@
 
         </div>
         <div class="col-md-4 maintext" style="margin-left: 20px;">
-          <h5 class="h5 text-capitalize"><b><a href="{% url 'profile' i.user.id %}"
+          <h5 class="h5 text-capitalize"><b><a href="{% url 'profilewithid' i.user.id %}"
                 style="text-decoration:none;">{{i.user.username}}</a></b></h5>
           <p class="p text-capitalize" style="color: gray;">{{i.user.bio}}</p>
 
@@ -46,7 +46,7 @@
               <div class="card-body">
 
                 <h5 class="card-title text-capitalize">{{i.title}} <button type="button" data-bs-toggle="modal"
-                    data-bs-target="#project-detail-edit"><i class="fas fa-edit" id="dataid"
+                    data-bs-target="#project-detail-edit" class="btneditt"><i class="fas fa-edit" id="dataid"
                       data-pid="{{i.id}}"></i></button></h5>
                 <p class="card-text">{{i.description}}</p>
                 <p class="card-text-1"><small class="text-muted">Created at {{i.current_time}}</small></p>

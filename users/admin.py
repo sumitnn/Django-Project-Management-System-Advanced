@@ -8,6 +8,6 @@ from django.contrib.auth.admin import UserAdmin
 
 admin.site.register(CreateAccount, UserAdmin)
 UserAdmin.fieldsets += ("Additional ",
-                        {'fields': ('profile_img', 'bio', 'mobile', 'gender')}),
+                        {'fields': ('profile_img', 'bio', 'mobile', 'gender', 'website', 'github', 'fb', 'insta', 'linkedin')}),
 
 admin.site.register(Project)

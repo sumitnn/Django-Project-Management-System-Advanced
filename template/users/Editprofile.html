@@ -1,0 +1,19 @@
+{%extends 'users/Base.html'%}
+{%block title%}PMS::Profile {{request.user.username}} {%endblock%}
+{% load static %}
+{%block css%}
+<!-- <link rel="stylesheet" type="text/css" href={% static "css/mainprofile.css" %}> -->
+
+{%endblock%}
+
+{% block body %}
+<!-- navbar  -->
+{% include "app/include/navbar.html" %}
+<h1>Profile Edit</h1>
+<div class="container mt-5">
+
+</div>
+
+
+
+{%endblock%}

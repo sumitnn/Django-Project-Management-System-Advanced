@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 # from django.contrib.auth.forms import UserCreationForm
-from .forms import SignupForm, ProjectForm
-from .models import Project
+from .forms import SignupForm, ProjectForm, UpdateProfileForm
+from .models import Project, CreateAccount
 
 
 # Create your views here.
@@ -12,26 +12,27 @@ User = get_user_model()
 
 def profile(request):
     context = {}
-    try:
-        u = User.objects.get(username=request.user)
-        project = Project.objects.filter(user=u)
-        context['pobj'] = project
-        context['puser'] = u.email
-    except:
-        return redirect("")
+
+    u = User.objects.get(username=request.user)
+    project = Project.objects.filter(user=u)
+    projectuser = Project.objects.filter(user=u).first()
+    print(projectuser.user.username)
+    context['pobj'] = project
+    context['projecttuser'] = projectuser.user.username
 
     return render(request, "users/profile.html", context)
 
 
-def profile(request, id):
+def profileid(request, id):
     context = {}
-    try:
-        u = User.objects.get(username=request.user)
-        project = Project.objects.filter(user=u)
-        context['pobj'] = project
-        context['puser'] = u.email
-    except:
-        return redirect("")
+
+    u = User.objects.get(id=id)
+    project = Project.objects.filter(user=u)
+    projectuser = Project.objects.filter(user=u).first()
+    print(projectuser.user.username)
+    context['pobj'] = project
+    context['projecttuser'] = projectuser.user.username
+    context['projecttdetails'] = projectuser
 
     return render(request, "users/profile.html", context)
 
@@ -47,8 +48,6 @@ def upload(request):
         notes = request.POST.get('notes')
         project_file = request.POST.get('project_file')
         description = request.POST.get('description')
-        print(u.id)
-        print(u)
         instance = Project(user=u, title=title, project_img=project_img,
                            project_type=project_type, notes=notes, project_file=project_file, description=description)
 
@@ -81,3 +80,12 @@ def signup(request):
 
     context['form'] = form
     return render(request, "users/Signup.html", context)
+
+
+def profileedit(request, id):
+    context = {}
+
+    u = User.objects.get(id=id)
+    context['form'] = UpdateProfileForm
+    context['formvalues'] = u
+    return render(request, "users/Editprofile.html", context)

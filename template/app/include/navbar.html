@@ -5,7 +5,7 @@
         <img class="navbar-brand " src="{% static 'projectimages/logo.png' %}"
             style="margin-top: 1px; height:60px; width:100px;" />
         <div class="profile-icon">
-            <a href={% url "profile" %}><i class="fas fa-user-circle"
+            <a href={% url 'profilewithid' request.user.id %}><i class="fas fa-user-circle"
                     style="font-size: 25px; margin-right: 25px;"></i></a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -62,7 +62,7 @@
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href={% url "profile" %}><i
+                        <li><a class="dropdown-item" href={% url "profilewithid" request.user.id %}><i
                                     class="fas fa-user-circle"></i>&nbsp;&nbsp;&nbsp;Profile</a>
                         </li>
                         <li><a class="dropdown-item" href="#"><i class="fas fa-comment-alt"></i>&nbsp;&nbsp;
