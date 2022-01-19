@@ -45,6 +45,10 @@ class Project(models.Model):
     project_file = models.FileField(
         upload_to="project-files/", blank=True, null=True)
     description = models.TextField(null=True, blank=True)
+    likes = models.ManyToManyField(
+        CreateAccount, related_name="likes")
+    comment = models.ManyToManyField(
+        CreateAccount, related_name="comment")
 
     def __str__(self):
         return self.title

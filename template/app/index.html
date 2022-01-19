@@ -74,12 +74,19 @@
       <!-- like vaghre -->
       <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-6 icons">
-          <a href="#"><i class="fas fa-fire-alt emoji" style="font-size: 25px; margin-left: 5px;"></i></a>
-          <a href="#"><i class="far fa-comments emoji" style="font-size: 25px;margin-left: 15px;"></i></a>
-          <a href="#"><i class="fas fa-share emoji" style="font-size: 25px; margin-left: 20px;"></i></a>
+        <div class="col-md-5 icons">
+
+          <button type="button" id="flame-btn" style="border:none;background:none;"><i
+              class="fas fa-fire-alt emoji mt-1" {% if not request.user in i.likes %}
+              style="font-size: 22px; margin-left:20px;color:blue;" {% else %}
+              style="font-size: 22px; margin-left:20px;color:red;" {% endif %}></i></button>
+
+          <small class="p-2 "><b>{{i.likes.count}}</b> Flame</small>
+
+          <!-- <a href="#"><i class="far fa-comments emoji" style="font-size: 20px;"></i></a> -->
+          <!-- <a href="#"><i class="fas fa-share emoji" style="font-size: 20px; margin-left: 20px;"></i></a> -->
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-2"></div>
         <div class="col-md-4 team">
           <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
           <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
@@ -89,14 +96,6 @@
 
       </div>
       <div class="row message">
-        <div class="col-md-1"></div>
-        <div class="col-md-9">
-          <input type="text" placeholder="add comment..." class="form-control"
-            style="height: 30px; margin-top: 15px; border-top: none; border-left: none; border-right: none;">
-        </div>
-        <div class="col-md-2 message">
-          <a href="#"><i class="fab fa-telegram-plane emoji2" style="font-size: 35px; margin-top: 8px;"></i></a>
-        </div>
 
       </div>
       <br>
@@ -108,8 +107,6 @@
 
 
   <!-- End main page -->
-
-
   <!-- Start Friends -->
   <div class="col-md-3 friend-box">
     <div class="card text-center position-fixed friend-box-extra">
@@ -197,8 +194,6 @@
   <!-- End friends -->
   <div class="col-md-1"></div>
 </div>
-
-
 <!-- Modal -->
 <div class="modal fade" id="project-detail-edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -262,10 +257,6 @@
       loadprojectdetails(s);
     });
 
-
-
-
-
     //update project 
     $("#update-project").click(
       () => {
@@ -298,11 +289,6 @@
 
           }
         });
-
-
-
-
-
       });
 
     //delete proejct
@@ -320,6 +306,8 @@
 
       });
 
+    // Flame Button 
+   
 
 
   });

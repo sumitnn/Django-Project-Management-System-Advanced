@@ -10,4 +10,8 @@ admin.site.register(CreateAccount, UserAdmin)
 UserAdmin.fieldsets += ("Additional ",
                         {'fields': ('profile_img', 'bio', 'mobile', 'gender', 'website', 'github', 'fb', 'insta', 'linkedin')}),
 
-admin.site.register(Project)
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'title',
+                    'current_time', 'project_img']
