@@ -19,9 +19,9 @@
             <div class="d-flex flex-column align-items-center text-center">
               <div class="profile-img">
                 {% if projecttdetails.user.profile_img %}
-                <img src="{{request.user.profile_img.url}}" alt="" />
+                <img src="{{projecttdetails.user.profile_img.url}}" alt="" />
                 {%else%}
-                <img src="{%static 'projectimages/xs/avatar1.jpg' %}" alt="" />
+                <img src="{%static 'projectimages/avatar.png' %}" alt="" />
                 {%endif%}
                 {% if request.user.username == projecttuser %}
                 <div class="file btn btn-lg btn-primary">
@@ -123,8 +123,7 @@
               {% if i.user.profile_img %}
               <img src="{{i.user.profile_img.url}}" style="height: 60px; width: 60px; border-radius: 50%;">
               {% else%}
-              <img src="{%static 'projectimages/xs/avatar1.jpg' %}"
-                style="height: 60px; width: 60px; border-radius: 50%;">
+              <img src="{%static 'projectimages/avatar.png' %}" style="height: 60px; width: 60px; border-radius: 50%;">
 
               {%endif%}
             </div>
@@ -148,7 +147,7 @@
               <img src="{{i.project_img.url}}" class="rounded mx-auto d-block" style="height: 200px; width: 200px;"
                 alt="...">
               {%else%}
-              <img src="{%static 'projectimages/xs/avatar1.jpg' %}" class="rounded mx-auto d-block"
+              <img src="{%static 'projectimages/project-image.png' %}" class="rounded mx-auto d-block"
                 style="height: 200px; width: 200px;" alt="...">
               {%endif %}
 

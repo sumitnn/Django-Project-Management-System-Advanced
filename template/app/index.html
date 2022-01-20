@@ -22,7 +22,7 @@
           {% if i.user.profile_img %}
           <img src={{i.user.profile_img.url}} style="height: 60px; width: 60px; border-radius: 50%;">
           {% else %}
-          <img src="{%static 'projectimages/xs/avatar1.jpg' %}" style="height: 60px; width: 60px; border-radius: 50%;">
+          <img src="{%static 'projectimages/avatar.png' %}" style="height: 60px; width: 60px; border-radius: 50%;">
           {% endif %}
 
         </div>
@@ -58,7 +58,7 @@
 
               <img src="{{i.project_img.url}}" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
               {%else%}
-              <img src="{%static 'projectimages/xs/avatar1.jpg' %}"
+              <img src="{%static 'projectimages/project-image.png' %}"
                 class="img-fluid rounded-start d-flex justify-content-center" alt="...">
 
 
@@ -81,7 +81,7 @@
               style="font-size: 22px; margin-left:20px;color:blue;" {% else %}
               style="font-size: 22px; margin-left:20px;color:red;" {% endif %}></i></button>
 
-          <small class="p-2 "><b>{{i.likes.count}}</b> Flame</small>
+          <small class="p-2 "><b>{{i.count_flame}}</b> Flame</small>
 
           <!-- <a href="#"><i class="far fa-comments emoji" style="font-size: 20px;"></i></a> -->
           <!-- <a href="#"><i class="fas fa-share emoji" style="font-size: 20px; margin-left: 20px;"></i></a> -->
@@ -307,7 +307,7 @@
       });
 
     // Flame Button 
-   
+
 
 
   });

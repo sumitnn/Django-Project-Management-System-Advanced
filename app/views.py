@@ -10,8 +10,10 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     context = {}
     project = Project.objects.all()
+
     context['pobj'] = project
     context['form'] = ProjectForm()
+
     return render(request, "app/index.html", context)
 
 

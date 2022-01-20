@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CreateAccount, Project
+from .models import *
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -14,4 +14,4 @@ UserAdmin.fieldsets += ("Additional ",
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'title',
-                    'current_time', 'project_img']
+                    'current_time', 'project_img', 'project_file', 'description']
