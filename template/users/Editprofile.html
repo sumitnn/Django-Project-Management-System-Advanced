@@ -12,89 +12,116 @@
 
 <!-- body start  -->
 <div class="container rounded bg-white box-top mb-5 shadow p-3  bg-white rounded">
-    <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
-                    width="150px" src="{{formvalues.profile_img.url}}"><span
-                    class="font-weight-bold text-primary">{{formvalues.username}}</span><span
-                    class="text-black-50 text-success">{{formvalues.email}}</span><span>
-                </span></div>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h2 class="text-right text-primary">Profile Update</h2>
+        <div class="row">
+                <div class="col-md-3 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                                {% if formvalues.user.profile_img %}
+                                <img class="rounded-circle mt-5" width="150px"
+                                        src="{{formvalues.user.profile_img.url}}">
+                                {%else%}
+                                <img class="rounded-circle mt-5" width="150px"
+                                        src="{%static 'projectimages/avatar.png' %}" alt="">
+
+                                {% endif %}
+
+                                <span class="font-weight-bold text-primary">{{formvalues.username}}</span><span
+                                        class="text-black-50 text-success">{{formvalues.email}}</span><span>
+                                </span>
+                        </div>
                 </div>
-                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-                    <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">First Name</label><input type="text"
-                                class="form-control" placeholder="first name" name="first_name"
-                                value="{{formvalues.first_name}}"></div>
-                        <div class="col-md-6"><label class="labels">Surname</label><input type="text"
-                                class="form-control" value="{{formvalues.last_name}}" name="last_name"
-                                placeholder="surname"></div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
-                                class="form-control" placeholder="enter phone number" name="mobile"
-                                value="{{formvalues.mobile}}"></div>
-                        <div class="col-md-12"><label class="labels">Username</label><input type="text"
-                                class="form-control" placeholder="Enter username" name="username"
-                                value="{{formvalues.username}}">
+                <div class="col-md-5 border-right">
+                        <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h2 class="text-right text-primary">Profile Update</h2>
+                                </div>
+                                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                                        <div class="row mt-2">
+                                                <div class="col-md-6"><label class="labels">First Name</label><input
+                                                                type="text" class="form-control"
+                                                                placeholder="first name" name="first_name"
+                                                                value="{{formvalues.first_name}}"></div>
+                                                <div class="col-md-6"><label class="labels">Surname</label><input
+                                                                type="text" class="form-control"
+                                                                value="{{formvalues.last_name}}" name="last_name"
+                                                                placeholder="surname"></div>
+                                        </div>
+                                        <div class="row mt-3">
+                                                <div class="col-md-12"><label class="labels">Mobile Number</label><input
+                                                                type="text" class="form-control"
+                                                                placeholder="enter phone number" name="mobile"
+                                                                value="{{formvalues.mobile}}"></div>
+                                                <div class="col-md-12"><label class="labels">Username</label><input
+                                                                type="text" class="form-control"
+                                                                placeholder="Enter username" name="username"
+                                                                value="{{formvalues.username}}">
+                                                </div>
+
+                                                <div class="col-md-12"><label class="labels">Profile Image</label><input
+                                                                type="file" class="form-control-file mt-4"
+                                                                placeholder="enter address line 2"
+                                                                value={{formvalues.user.profile_img.url}}
+                                                                name="profile_img">
+                                                </div>
+                                                <div class="col-md-12"><label class="labels">Email ID</label><input
+                                                                type="text" class="form-control"
+                                                                placeholder="Enter Email id" name="email"
+                                                                value="{{formvalues.email}}"></div>
+                                                <div class="col-md-12"><label class="labels">Bio</label><input
+                                                                type="text" class="form-control" placeholder="Bio"
+                                                                name="bio" value="{{formvalues.bio}}"></div>
+                                        </div>
+                                        <div class="row mt-3">
+                                                <div class="col-md-6"><label class="labels">Country</label><input
+                                                                type="text" class="form-control" placeholder="country"
+                                                                value=""></div>
+                                                <div class="col-md-6"><label class="labels">State/Region</label><input
+                                                                type="text" class="form-control" value=""
+                                                                placeholder="state"></div>
+
+                                                <div class="col-md-6 ">
+                                                        <label class="labels">Select Gender</label>
+                                                        <select name="gender" class="form-control">
+                                                                <option value="N">None</option>
+                                                                <option value="M">Male</option>
+                                                                <option value="F">Female</option>
+                                                                <option value="O">Others</option>
+
+
+                                                        </select>
+
+                                                </div>
+
+                                        </div>
+                                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
+                                                        type="submit">Save
+                                                        Profile</button></div>
                         </div>
-
-                        <div class="col-md-12"><label class="labels">Profile Image</label><input type="file"
-                                class="form-control" placeholder="enter address line 2"
-                                value={{formvalues.profile_img.url}} name="profile_img"></div>
-                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text"
-                                class="form-control" placeholder="Enter Email id" name="email"
-                                value="{{formvalues.email}}"></div>
-                        <div class="col-md-12"><label class="labels">Bio</label><input type="text" class="form-control"
-                                placeholder="Bio" name="bio" value="{{formvalues.bio}}"></div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Country</label><input type="text"
-                                class="form-control" placeholder="country" value=""></div>
-                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text"
-                                class="form-control" value="" placeholder="state"></div>
-
-                        <div class="col-md-6 ">
-                            <label class="labels">Select Gender</label>
-                            <select name="gender" class="form-control">
-                                <option value="N">None</option>
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
-                                <option value="O">Others</option>
-
-
-                            </select>
-
+                </div>
+                <div class="col-md-4">
+                        <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center experience text-danger">
+                                        <span>Edit
+                                                Social Media Links</span>
+                                </div><br>
+                                <div class="col-md-12"><label class="labels">Portfolio Website</label><input type="url"
+                                                class="form-control" placeholder="https://userportfoilo.com"
+                                                name="website" value="{{formvalues.website}}"></div> <br>
+                                <div class="col-md-12"><label class="labels">Linked In</label><input type="url"
+                                                class="form-control" placeholder="Enter Your Linked In url"
+                                                name="linkedin" value="{{formvalues.linkedin}}"></div>
+                                <div class="col-md-12"><label class="labels">Facebook</label><input type="url"
+                                                class="form-control" placeholder="Enter Your Facebook url" name="fb"
+                                                value="{{formvalues.fb}}"></div>
+                                <div class="col-md-12"><label class="labels">Github</label><input type="url"
+                                                class="form-control" placeholder="Enter Your Github url" name="github"
+                                                value="{{formvalues.github}}"></div>
+                                <div class="col-md-12"><label class="labels">Instagram</label><input type="url"
+                                                class="form-control" placeholder="Enter Your Instagram url" name="insta"
+                                                value="{{formvalues.insta}}"></div>
                         </div>
-
-                    </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save
-                            Profile</button></div>
-            </div>
+                        </form>
+                </div>
         </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience text-danger"><span>Edit
-                        Social Media Links</span></div><br>
-                <div class="col-md-12"><label class="labels">Portfolio Website</label><input type="url"
-                        class="form-control" placeholder="https://userportfoilo.com" name="website"
-                        value="{{formvalues.website}}"></div> <br>
-                <div class="col-md-12"><label class="labels">Linked In</label><input type="url" class="form-control"
-                        placeholder="Enter Your Linked In url" name="linkedin" value="{{formvalues.linkedin}}"></div>
-                <div class="col-md-12"><label class="labels">Facebook</label><input type="url" class="form-control"
-                        placeholder="Enter Your Facebook url" name="fb" value="{{formvalues.fb}}"></div>
-                <div class="col-md-12"><label class="labels">Github</label><input type="url" class="form-control"
-                        placeholder="Enter Your Github url" name="github" value="{{formvalues.github}}"></div>
-                <div class="col-md-12"><label class="labels">Instagram</label><input type="url" class="form-control"
-                        placeholder="Enter Your Instagram url" name="insta" value="{{formvalues.insta}}"></div>
-            </div>
-            </form>
-        </div>
-    </div>
 </div>
 
 

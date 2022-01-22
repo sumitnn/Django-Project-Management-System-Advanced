@@ -23,7 +23,7 @@ class SignupForm(UserCreationForm):
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        exclude = ['user', 'current_time']
+        exclude = ['user', 'current_time', 'flame']
 
         widgets = {
             'title': TextInput(attrs={'class': 'form-control'}),
