@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from users.models import Project
 from users.forms import ProjectForm
 from django.contrib.auth.decorators import login_required
@@ -12,10 +12,45 @@ def home(request):
     project = Project.objects.all()
 
     context['pobj'] = project
-    context['form'] = ProjectForm()
 
     return render(request, "app/index.html", context)
 
 
 def like(request, id):
-    pass
+
+    project = Project.objects.get(id=id)
+
+    if request.method == 'POST':
+        if request.user in project.flame.all():
+            project.flame.remove(request.user)
+        else:
+            project.flame.add(request.user)
+    return redirect('home')
+
+
+def projectdetail(request, id):
+    context = {}
+    project = Project.objects.get(id=id)
+    context['project'] = project
+    context['form'] = ProjectForm(instance=project)
+    return render(request, 'app\projectdetail.html', context)
+
+
+def DeletePost(request, id):
+    if request.method == 'POST':
+        project = Project.objects.get(id=id)
+        project.delete()
+        return redirect('home')
+
+    else:
+        return HttpResponse("<h2>this method is not allowed </h2>")
+
+
+def UpdatePost(request, id):
+    project = Project.objects.get(id=id)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        print(form.errors)

@@ -45,11 +45,11 @@
             <div class="col-md-7">
               <div class="card-body">
 
-                <h5 class="card-title text-capitalize">{{i.title}} <button type="button" data-bs-toggle="modal"
-                    data-bs-target="#project-detail-edit" class="btneditt"><i class="fas fa-edit" id="dataid"
-                      data-pid="{{i.id}}"></i></button></h5>
+                <h5 class="card-title text-capitalize">{{i.title}}</h5>
                 <p class="card-text">{{i.description}}</p>
                 <p class="card-text-1"><small class="text-muted">Created at {{i.current_time}}</small></p>
+                <p class="mt-2 text-primary"><a href={% url 'project-detail' i.id %} style="text-decoration: None;">More
+                    Details....</a></p>
 
               </div>
             </div>
@@ -68,30 +68,46 @@
             </div>
           </div>
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-1">
+
+        </div>
       </div>
       <hr>
       <!-- like vaghre -->
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-5 icons">
+          <form method="Post" action={% url 'like' i.id %}>
+            {% csrf_token %}
+            <button type="submit" id="flame-btn" style="border:none;background:none;">
 
-          <button type="button" id="flame-btn" style="border:none;background:none;"><i
-              class="fas fa-fire-alt emoji mt-1" {% if not request.user in i.likes %}
-              style="font-size: 22px; margin-left:20px;color:blue;" {% else %}
-              style="font-size: 22px; margin-left:20px;color:red;" {% endif %}></i></button>
-
+              <i class="fas fa-fire-alt emoji mt-1" {% if request.user in i.flame.all %}
+                style="font-size: 22px; margin-left:20px;color:red;" {% else %}
+                style="font-size: 22px; margin-left:20px;color:blue;" {% endif %}></i></button>
+          </form>
           <small class="p-2 "><b>{{i.count_flame}}</b> Flame</small>
-
-          <!-- <a href="#"><i class="far fa-comments emoji" style="font-size: 20px;"></i></a> -->
           <!-- <a href="#"><i class="fas fa-share emoji" style="font-size: 20px; margin-left: 20px;"></i></a> -->
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-4 team">
-          <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
-          <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
-          <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
-          <img src="" class="emoji2" style="height: 40px; width: 40px; border-radius: 50%;">
+
+          {% if i.team_members.all %}
+          {% for team in i.team_members.all %}
+          {% if team.profile_img %}
+          <img src="{{team.profile_img.url}}" class="emoji2 img-fluid"
+            style="height: 40px; width: 40px; border-radius: 50%;">
+          {% else %}
+          <img src="{%static 'projectimages/avatar.png' %}" class="emoji2 img-fluid"
+            style="height: 40px; width: 40px; border-radius: 50%;">
+
+          {% endif %}
+          {% endfor %}
+
+
+          {%else%}
+          <small class="text-center">No Team Members</small>
+          {% endif %}
+
         </div>
 
       </div>
@@ -194,34 +210,7 @@
   <!-- End friends -->
   <div class="col-md-1"></div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="project-detail-edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Project Detail</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="#project-detail-edit-body">
-        <!-- backend form  -->
-        <form id="projectudform" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{form}}
-          <div class="modal-footer">
 
-            <button type="button" id="update-project" class="btn btn-primary">Update Project</button>
-            <button type="button" id="delete-project" class="btn btn-primary">Delete Project</button>
-          </div>
-
-
-        </form>
-
-
-      </div>
-
-    </div>
-  </div>
-</div>
 
 {% endblock %}
 

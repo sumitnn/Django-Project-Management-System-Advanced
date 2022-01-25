@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
-
 from django.contrib.auth import get_user_model
 # from django.contrib.auth.forms import UserCreationForm
 from .forms import SignupForm, ProjectForm, UpdateProfileForm
@@ -41,23 +40,15 @@ def profileid(request, id):
 def upload(request):
     context = {}
     if request.method == "POST":
-        User = get_user_model()
-        u = User.objects.get(username=request.user)
-        title = request.POST.get('title')
-        project_img = request.POST.get('project_img')
-        project_type = request.POST.get('project_type')
-        notes = request.POST.get('notes')
-        project_file = request.POST.get('project_file')
-        description = request.POST.get('description')
-        instance = Project(user=u, title=title, project_img=project_img,
-                           project_type=project_type, notes=notes, project_file=project_file, description=description)
+        instance = ProjectForm(request.POST, request.FILES)
 
-        if instance is not None:
+        if instance.is_valid():
             instance.save()
             return redirect("home")
 
         else:
-            print("failed")
+            context['form'] = instance
+            return render(request, "users/upload.html", context)
 
     context['form'] = ProjectForm(label_suffix=" ")
 

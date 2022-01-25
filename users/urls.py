@@ -4,7 +4,7 @@ from . views import *
 
 
 urlpatterns = [
-    # path("profile/", profile, name="profile"),
+
     path("profile/<int:id>/", profileid, name="profilewithid"),
     path("profile-edit/<int:id>/", profileedit, name="profileedit"),
     path("profile-delete/<int:id>/", profiledelete, name="profiledelete"),

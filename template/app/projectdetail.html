@@ -1,0 +1,164 @@
+{%extends 'app/Base.html'%}
+{%block title%}PMS::Project-Detail{%endblock%}
+{% load static %}
+{%block css%}
+<!-- <link rel="stylesheet" type="text/css" href={% static "css/index.css" %}> -->
+{%endblock%}
+{% block body %}
+<!-- navbar  -->
+{% include "app/include/navbar.html" %}
+<div class="container " style="margin-top: 100px;">
+    <div class="row text-center">
+        <div class="col-md-8">
+            <div class="card mb-3" style="max-width:95%;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        {% if project.project_img %}
+                        <img src="{{project.project_img.url}}" class="img-fluid" alt="...">
+
+                        {% else %}
+                        <img src={% static 'projectimages/project-image.png' %} class="img-fluid rounded-start"
+                            alt="...">
+
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <div class="mt-3">
+                            <h5 class="d-inline text-capitalize">{{project.user}}</h5>
+                            (<p class="d-inline ">{{project.user.bio}}</p>)
+
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{project.title}}</h5>
+                            <p class="card-text">{{project.description}}</p>
+                            <p class="card-text"><small class="text-muted">Created At
+                                    {{project.current_time}}</small>&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <small class="text-muted">Last updated {{project.updated_at}}</small>
+
+                            </p>
+
+                        </div>
+                        {% if request.user == project.user%}
+                        <div>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Edit
+                            </button>
+
+                            <form class="d-inline" action="{%url 'deletepost' project.id %}" method="Post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </div>
+                        {% else %}{% endif %}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- like vaghre -->
+            <div class="row border shadow">
+                <div class="col-md-2">
+                    <form method="Post" action={% url 'like' project.id %}>
+                        {% csrf_token %}
+                        <button type="submit" id="flame-btn" style="border:none;background:none;">
+
+                            <i class="fas fa-fire-alt emoji mt-1" {% if request.user in project.flame.all %}
+                                style="font-size: 22px; margin-left:20px;color:red;" {% else %}
+                                style="font-size: 22px; margin-left:20px;color:blue;" {% endif %}></i></button>
+                    </form>
+                    <small class="p-2 "><b> {{project.count_flame}} Flame</b> </small>
+
+                </div>
+
+                <div class="col-md-10 ">
+                    {% if project.flame.all.count > 0 %}
+                    {% for u in project.flame.all.reverse %}
+                    {% if u.profile_img %}
+                    <img src="{{u.profile_img.url}}" class="emoji2"
+                        style="height: 40px; width: 40px; border-radius: 50%; margin:5px 5px;">
+
+                    {% else %}
+                    <img src="{%static 'projectimages/avatar.png' %}" class="emoji2 img-fluid"
+                        style="height: 40px; width: 40px; border-radius: 50%;">
+
+                    {% endif %}
+
+                    {% endfor %}
+                    {% else %}<small class="mt-4 text-center ">No user likes </small>
+                    {% endif %}
+                </div>
+
+            </div>
+            <!-- comment section  -->
+            <div class="mt-3 text-center">
+                <h3>Comments</h3>
+            </div>
+
+        </div>
+        <!-- second div  -->
+        <div class="col-md-4">
+            <h3>Team Members</h3>
+            <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
+                            Accordion Item #1
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                        aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the
+                            collapse
+                            plugin adds the appropriate classes that we use to style each element. These classes control
+                            the overall
+                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of
+                            this with
+                            custom CSS or overriding our default variables. It's also worth noting that just about any
+                            HTML can go
+                            within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Project Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="d-inline" action="{%url 'updatepost' project.id %}" method="Post"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+
+                <button type="submit" class="btn btn-outline-primary"></i>Update</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
