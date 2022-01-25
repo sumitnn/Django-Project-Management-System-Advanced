@@ -2,7 +2,7 @@
 {%block title%}PMS::Project-Detail{%endblock%}
 {% load static %}
 {%block css%}
-<!-- <link rel="stylesheet" type="text/css" href={% static "css/index.css" %}> -->
+<link rel="stylesheet" type="text/css" href={% static "css/projectdetail.css" %}>
 {%endblock%}
 {% block body %}
 <!-- navbar  -->
@@ -92,40 +92,112 @@
 
             </div>
             <!-- comment section  -->
-            <div class="mt-3 text-center">
-                <h3>Comments</h3>
-            </div>
 
+            <div class="container mt-5 border shadow" style="overflow-y: scroll; height:250px;margin-bottom: 5rem;">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12">
+                        <div class="headings d-flex justify-content-between align-items-center mb-3">
+                            <h5>Comments(6)</h5>
+                        </div>
+                        <div class="card p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="user d-flex flex-row align-items-center"> <img
+                                        src="https://i.imgur.com/hczKIze.jpg" width="30"
+                                        class="user-img rounded-circle mr-2"> <span><small
+                                            class="font-weight-bold text-primary">james_olesenn</small> <small
+                                            class="font-weight-bold">Hmm, This poster looks cool</small></span>
+                                </div> <small>2 days
+                                    ago</small>
+                            </div>
+
+                        </div>
+
+                        <!-- secod  -->
+                        <div class="card p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="user d-flex flex-row align-items-center"> <img
+                                        src="https://i.imgur.com/hczKIze.jpg" width="30"
+                                        class="user-img rounded-circle mr-2"> <span><small
+                                            class="font-weight-bold text-primary">james_olesenn</small> <small
+                                            class="font-weight-bold">Hmm,
+                                            This poster looks cool</small></span>
+                                </div> <small>2 days
+                                    ago</small>
+                            </div>
+
+                        </div>
+                        <!-- third  -->
+                        <div class="card p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="user d-flex flex-row align-items-center"> <img
+                                        src="https://i.imgur.com/hczKIze.jpg" width="30"
+                                        class="user-img rounded-circle mr-2"> <span><small
+                                            class="font-weight-bold text-primary">james_olesenn</small> <small
+                                            class="font-weight-bold">Hmm,
+                                            This poster looks cool</small></span>
+                                </div> <small>2 days
+                                    ago</small>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
+
+
         <!-- second div  -->
         <div class="col-md-4">
             <h3>Team Members</h3>
             <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
-
+                {% if project.team_members %}
+                {% for team in project.team_members.all %}
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                             aria-controls="panelsStayOpen-collapseOne">
-                            Accordion Item #1
+                            <b class="text-capitalize">{{team.username}}</b>
                         </button>
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
                         aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the
-                            collapse
-                            plugin adds the appropriate classes that we use to style each element. These classes control
-                            the overall
-                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of
-                            this with
-                            custom CSS or overriding our default variables. It's also worth noting that just about any
-                            HTML can go
-                            within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <!-- team member profile  -->
+                            <div class="container mx-auto mt-4">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card2" style="width: 22rem;">
+                                            {% if team.profile_img %}
+                                            <img src="{{team.profile_img.url}}" class="card-img-top" alt="...">
+                                            {% else %}
+                                            <img src="{%static 'projectimages/avatar.png' %}" class="card-img-top"
+                                                alt="...">{% endif %}
+                                            <div class="card-body">
+                                                <h5 class="card-title text-capitalize">{{team.username}}</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted text-capitalize">{{team.bio}}
+                                                </h6>
+                                                <p class="card-text">Send Message on Email : {{team.email}}</p>
+                                                <a href="{% url 'profilewithid' team.id %}" class="btn2 btn mr-2"><i
+                                                        class="fas fa-link"></i> Visit
+                                                    Profile</a>
+                                                <a href="{{team.github}}" class="btn2 btn"><i
+                                                        class="fab fa-github"></i>Follow on
+                                                    Github</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+                {% endfor %}
+                {% else %}
+                {% endif %}
             </div>
         </div>
     </div>
