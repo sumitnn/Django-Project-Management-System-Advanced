@@ -9,8 +9,8 @@ raj verma
 xntkLDYm6l
 
 user2
-jon@gmail.com
-jonn cinna
+janny@gmail.com
+janny
 xntkLDYm6l
 
 user3

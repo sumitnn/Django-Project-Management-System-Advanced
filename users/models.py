@@ -32,6 +32,8 @@ class CreateAccount(AbstractUser):
     gender = models.CharField(
         max_length=1, choices=GENDER, null=True, blank=True)
     bio = models.TextField(blank=True, null=True, default="student")
+    country = models.CharField(
+        blank=True, null=True, default="India", max_length=25)
     github = models.URLField(max_length=200, blank=True, default="github.com")
     fb = models.URLField(max_length=200, blank=True,
                          default="www.facebook.com")

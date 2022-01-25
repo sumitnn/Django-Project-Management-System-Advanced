@@ -3,13 +3,14 @@ from django.contrib.auth import get_user_model
 # from django.contrib.auth.forms import UserCreationForm
 from .forms import SignupForm, ProjectForm, UpdateProfileForm
 from .models import Project, CreateAccount
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 User = get_user_model()
 
 
+@login_required(login_url="/login/")
 def profile(request):
     context = {}
 
@@ -23,20 +24,22 @@ def profile(request):
     return render(request, "users/profile.html", context)
 
 
+@login_required(login_url="/login/")
 def profileid(request, id):
     context = {}
 
     u = User.objects.get(id=id)
     project = Project.objects.filter(user=u)
     projectuser = Project.objects.filter(user=u).first()
-    print(projectuser.user.username)
-    context['pobj'] = project
-    context['projecttuser'] = projectuser.user.username
+
+    context['pobj'] = project if project else None
+    context['projecttuser'] = projectuser.user.username if projectuser else ''
     context['projecttdetails'] = projectuser
 
     return render(request, "users/profile.html", context)
 
 
+@login_required(login_url="/login/")
 def upload(request):
     context = {}
     if request.method == "POST":
@@ -74,6 +77,7 @@ def signup(request):
     return render(request, "users/Signup.html", context)
 
 
+@login_required(login_url="/login/")
 def profileedit(request, id):
     context = {}
     u = User.objects.get(id=id)
@@ -90,6 +94,7 @@ def profileedit(request, id):
     return render(request, "users/Editprofile.html", context)
 
 
+@login_required(login_url="/login/")
 def profiledelete(request, id):
     if request.method == "POST":
         u = User.objects.get(id=id)

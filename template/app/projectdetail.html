@@ -154,15 +154,15 @@
                 {% if project.team_members %}
                 {% for team in project.team_members.all %}
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne{{team.id}}">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                            aria-controls="panelsStayOpen-collapseOne">
+                            data-bs-target="#panelsStayOpen-collapseOne{{team.id}}" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne{{team.id}}">
                             <b class="text-capitalize">{{team.username}}</b>
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                        aria-labelledby="panelsStayOpen-headingOne">
+                    <div id="panelsStayOpen-collapseOne{{team.id}}" class="accordion-collapse collapse "
+                        aria-labelledby="panelsStayOpen-headingOne{{team.id}}">
                         <div class="accordion-body">
                             <!-- team member profile  -->
                             <div class="container mx-auto mt-4">

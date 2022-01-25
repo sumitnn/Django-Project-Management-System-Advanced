@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -25,6 +26,7 @@ def loginn(request):
     return render(request, "authentication/login.html")
 
 
+@login_required(login_url="/login/")
 def logoutt(request):
     logout(request)
     return redirect("login")
@@ -46,6 +48,7 @@ class PrcomView(PasswordResetCompleteView):
     template_name = "authentication/password-reset-complete.html"
 
 
+@login_required(login_url="/login/")
 def passwordchange(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)

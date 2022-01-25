@@ -16,6 +16,7 @@ def home(request):
     return render(request, "app/index.html", context)
 
 
+@login_required(login_url="/login/")
 def like(request, id):
 
     project = Project.objects.get(id=id)
@@ -28,6 +29,7 @@ def like(request, id):
     return redirect('home')
 
 
+@login_required(login_url="/login/")
 def projectdetail(request, id):
     context = {}
     project = Project.objects.get(id=id)
@@ -36,6 +38,7 @@ def projectdetail(request, id):
     return render(request, 'app\projectdetail.html', context)
 
 
+@login_required(login_url="/login/")
 def DeletePost(request, id):
     if request.method == 'POST':
         project = Project.objects.get(id=id)
@@ -46,6 +49,7 @@ def DeletePost(request, id):
         return HttpResponse("<h2>this method is not allowed </h2>")
 
 
+@login_required(login_url="/login/")
 def UpdatePost(request, id):
     project = Project.objects.get(id=id)
     if request.method == 'POST':
