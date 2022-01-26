@@ -8,13 +8,13 @@
 <!-- navbar  -->
 {% include "app/include/navbar.html" %}
 <div class="container " style="margin-top: 100px;">
-    <div class="row text-center">
+    <div class="row">
         <div class="col-md-8">
-            <div class="card mb-3" style="max-width:95%;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        {% if project.project_img %}
-                        <img src="{{project.project_img.url}}" class="img-fluid" alt="...">
+            <!-- paste  -->
+            <div class="container mx-auto mt-4">
+                <div class="row">
+                    <div class="col-md-4" style="height:65vh;">{% if project.project_img %}
+                        <img src=" {{project.project_img.url}}" class="img-fluid" alt="...">
 
                         {% else %}
                         <img src={% static 'projectimages/project-image.png' %} class="img-fluid rounded-start"
@@ -22,40 +22,45 @@
 
                         {% endif %}
                     </div>
+
                     <div class="col-md-8">
-                        <div class="mt-3">
-                            <h5 class="d-inline text-capitalize">{{project.user}}</h5>
-                            (<p class="d-inline ">{{project.user.bio}}</p>)
+                        <div class="card2">
+                            <div class="card-body" style="height:65vh;">
+                                <h5 class="card-title text-capitalize">{{project.user}}&nbsp;({{project.user.bio}})</h5>
+                                <h6 class="card-subtitle mb-2 text-muted text-capitalize">
+                                    {{project.user.country}}
+                                </h6>
+                                <h5 class="card-title">{{project.title}}</h5>
+                                <p class="card-text">{{project.description}}</p>
+                                <p class="card-text"><small class="text-white">Created At
+                                        {{project.current_time}}</small>&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <small class="text-white">Last updated {{project.updated_at}}</small>
 
+                                </p>
+                                {% if request.user == project.user%}
+                                <div>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn2 btn  btn-outline-warning" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        Edit
+                                    </button>
+
+                                    <form class="d-inline" action="{%url 'deletepost' project.id %}" method="Post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn2 btn btn-outline-danger">Delete</button>
+                                    </form>
+                                </div>
+                                {% else %}{% endif %}
+
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{project.title}}</h5>
-                            <p class="card-text">{{project.description}}</p>
-                            <p class="card-text"><small class="text-muted">Created At
-                                    {{project.current_time}}</small>&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <small class="text-muted">Last updated {{project.updated_at}}</small>
-
-                            </p>
-
-                        </div>
-                        {% if request.user == project.user%}
-                        <div>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-outline-warning" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Edit
-                            </button>
-
-                            <form class="d-inline" action="{%url 'deletepost' project.id %}" method="Post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-outline-danger">Delete</button>
-                            </form>
-                        </div>
-                        {% else %}{% endif %}
                     </div>
+
                 </div>
             </div>
+
+
             <hr>
             <!-- like vaghre -->
             <div class="row border shadow">
@@ -97,49 +102,32 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-12">
                         <div class="headings d-flex justify-content-between align-items-center mb-3">
-                            <h5>Comments(6)</h5>
+                            <h5>Comments({{lenofcomment}})</h5>
                         </div>
+                        {% if comments %}
+                        {% for com in comments %}
                         <div class="card p-3 mb-3">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="user d-flex flex-row align-items-center"> <img
-                                        src="https://i.imgur.com/hczKIze.jpg" width="30"
-                                        class="user-img rounded-circle mr-2"> <span><small
-                                            class="font-weight-bold text-primary">james_olesenn</small> <small
-                                            class="font-weight-bold">Hmm, This poster looks cool</small></span>
-                                </div> <small>2 days
+                                <div class="user d-flex flex-row align-items-center">
+                                    {% if com.user.profile_img %}
+                                    <img src="{{com.user.profile_img.url}}" width="30"
+                                        class="user-img rounded-circle mr-2">
+                                    {% else %}
+                                    <img src="{%static 'projectimages/avatar.png' %}" width="30"
+                                        class="user-img rounded-circle mr-2">{% endif %}
+                                    <span>&nbsp;&nbsp;<small class="font-weight-bold text-primary"><a
+                                                href="{% url 'profilewithid' com.user.id %}"
+                                                class="text-decoration-none">{{com.user.username}}</a></small>&nbsp;&nbsp;
+                                        <small class="font-weight-bold">{{com.text}}</small></span>
+                                </div> <small>{{com.current_time}}
                                     ago</small>
                             </div>
 
-                        </div>
-
-                        <!-- secod  -->
-                        <div class="card p-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="user d-flex flex-row align-items-center"> <img
-                                        src="https://i.imgur.com/hczKIze.jpg" width="30"
-                                        class="user-img rounded-circle mr-2"> <span><small
-                                            class="font-weight-bold text-primary">james_olesenn</small> <small
-                                            class="font-weight-bold">Hmm,
-                                            This poster looks cool</small></span>
-                                </div> <small>2 days
-                                    ago</small>
-                            </div>
 
                         </div>
-                        <!-- third  -->
-                        <div class="card p-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="user d-flex flex-row align-items-center"> <img
-                                        src="https://i.imgur.com/hczKIze.jpg" width="30"
-                                        class="user-img rounded-circle mr-2"> <span><small
-                                            class="font-weight-bold text-primary">james_olesenn</small> <small
-                                            class="font-weight-bold">Hmm,
-                                            This poster looks cool</small></span>
-                                </div> <small>2 days
-                                    ago</small>
-                            </div>
+                        {% endfor %}
+                        {% else %}{% endif %}
 
-                        </div>
                     </div>
 
                 </div>

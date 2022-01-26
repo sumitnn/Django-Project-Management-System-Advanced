@@ -15,7 +15,7 @@
   <!-- Start main page -->
   <div class="col-md-7" id="parentofproject">
     {% for i in pobj %}
-    <div class="card">
+    <div class="card" id="commentdivdiv">
       <div class="row main" style="margin-top: 8px;">
         <div class="col-md-1"></div>
         <div class="col-md-1 imagemain">
@@ -86,7 +86,10 @@
                 style="font-size: 22px; margin-left:20px;color:blue;" {% endif %}></i></button>
           </form>
           <small class="p-2 "><b>{{i.count_flame}}</b> Flame</small>
-          <!-- <a href="#"><i class="fas fa-share emoji" style="font-size: 20px; margin-left: 20px;"></i></a> -->
+          <div class="d-inline commentdiv">
+            <button style="background: none;outline:none; border:none;padding:5px;" type="button" id="cmtbtn"><i
+                class="fas fa-comment-alt" style="font-size: 25px; margin-left: 20px;color:goldenrod; "></i></button>
+          </div>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-4 team">
@@ -111,13 +114,25 @@
         </div>
 
       </div>
-      <div class="row message">
+      <!-- comment add  -->
+      <div class="p-5" id="cmtbox">
+        <form method="Post" action={% url 'addcomment' i.id %}>{% csrf_token %}
+          <div class="d-flex flex-row add-comment-section m-4">
+            {% if request.user.profile_img %}
+            <img class="img-fluid img-responsive rounded-circle" src="{{request.user.profile_img.url}}" width="38">
+            {%else%}
+            <img class="img-fluid img-responsive rounded-circle" src="{%static 'projectimages/avatar.png' %}"
+              width="38">{% endif %}
 
+            <input type="text" class="form-control" name="cmttext" placeholder="Add comment"><button
+              class="btn btn-warning" type="submit">Comment</button>
+          </div>
       </div>
-      <br>
+      </form>
     </div>
     <br>
     {% endfor %}
+
 
   </div>
 
@@ -143,55 +158,29 @@
       </div>
       <!-- clost search button -->
       <div class="card-body">
-        <div class="row" style="margin-top: 5px;">
-          <div class="col-md-3">
-            <img src="" style="height: 50px; width: 50px; border-radius: 50%;">
-          </div>
-          <div class="col-md-9">
-            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Arpit Pandeya</p>
-            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">Python Developer</p>
-          </div>
-        </div>
-        <!-- close side image -->
-        <!-- side image -->
-        <div class="row" style="margin-top: 5px;">
-          <div class="col-md-3">
-            <img src="" style="height: 50px; width: 50px; border-radius: 50%;">
-          </div>
-          <div class="col-md-9">
-            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Sumit Nautiyal</p>
-            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">Python Developer</p>
-          </div>
-        </div>
-        <!-- close side image -->
 
-        <!-- side image -->
+        {% for user in users %}
         <div class="row" style="margin-top: 5px;">
           <div class="col-md-3">
-            <img src="" style="height: 50px; width: 50px; border-radius: 50%;">
+            {% if user.profile_img %}
+            <img src="{{user.profile_img.url}}" style="height: 30px; width: 30px; border-radius: 50%;">
+            {% else %}
+            <img src="{%static 'projectimages/avatar.png' %}" style="height: 30px; width: 30px; border-radius: 50%;">
+            {% endif %}
           </div>
           <div class="col-md-9">
-            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Uday kapoor</p>
-            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">Python Developer</p>
+            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;" class="text-capitalize text-success">
+              {{user.username}}
+            </p>
+            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">{{user.bio}}</p>
           </div>
         </div>
-        <!-- close side image -->
-        <!-- side image -->
-        <div class="row" style="margin-top: 5px;">
-          <div class="col-md-3">
-            <img src="" style="height: 50px; width: 50px; border-radius: 50%;">
-          </div>
-          <div class="col-md-9">
-            <p style="font-size: 15px; margin-bottom: 5px; margin-right: 40px;">Deepak Maletha</p>
-            <p style="font-size: 12px; color: gray; margin-bottom: 5px; margin-right: 40px;">Python Developer</p>
-          </div>
-        </div><br>
+        {% endfor %}
+
         <!-- see more link -->
-        <div>
+        <!-- <div>
           <a href="#" style="color: gray; margin-left: 70px;">See more...</a>
-        </div>
-        <!-- see more end -->
-        <!-- close side image -->
+        </div> -->
       </div>
     </div>
     <br>
@@ -218,11 +207,6 @@
 {% block js %}
 
 <script>
-
-
-
-
-
 </script>
 
 {% endblock %}

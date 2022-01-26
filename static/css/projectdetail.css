@@ -23,10 +23,12 @@
 }
 
 .btn2:hover, .btn:focus {
-      background: var(--gradient) !important;
+  background: var(--gradient) !important;
   -webkit-background-clip: none !important;
   -webkit-text-fill-color: #fff !important;
   border: 5px solid #fff !important; 
   box-shadow: #222 1px 0 10px;
   text-decoration: underline;
 }
+
+/* first div  */

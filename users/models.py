@@ -86,3 +86,13 @@ class Project(models.Model):
 
     class Meta:
         ordering = ['-current_time']
+
+
+class Comment(models.Model):
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, related_name="comment", blank=True)
+    text = models.CharField(max_length=100, blank=True, null=True)
+    current_time = models.DateTimeField(
+        auto_now_add=True, blank=True, null=True)
+    user = models.ForeignKey(
+        CreateAccount, on_delete=models.CASCADE, blank=True, null=True)

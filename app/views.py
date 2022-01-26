@@ -1,10 +1,11 @@
 from django.shortcuts import render, HttpResponse, redirect
-from users.models import Project
+from users.models import Project, Comment
 from users.forms import ProjectForm
 from django.contrib.auth.decorators import login_required
-
+from users.models import CreateAccount
 
 # Create your views here.
+
 
 @login_required(login_url="/login/")
 def home(request):
@@ -12,6 +13,7 @@ def home(request):
     project = Project.objects.all()
 
     context['pobj'] = project
+    context['users'] = CreateAccount.objects.all()
 
     return render(request, "app/index.html", context)
 
@@ -35,6 +37,8 @@ def projectdetail(request, id):
     project = Project.objects.get(id=id)
     context['project'] = project
     context['form'] = ProjectForm(instance=project)
+    context['comments'] = Comment.objects.filter(project=project)
+    context['lenofcomment'] = Comment.objects.filter(project=project).count()
     return render(request, 'app\projectdetail.html', context)
 
 
@@ -58,3 +62,16 @@ def UpdatePost(request, id):
             form.save()
             return redirect('home')
         print(form.errors)
+
+
+@login_required(login_url="/login/")
+def AddComment(request, id):
+    if request.method == 'POST':
+        project = Project.objects.get(id=id)
+        text = request.POST.get('cmttext')
+        user = CreateAccount.objects.get(id=request.user.id)
+        print(request.user.id)
+        print(request.user.username)
+        com = Comment(project=project, text=text, user=user)
+        com.save()
+        return redirect("home")

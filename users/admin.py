@@ -15,3 +15,6 @@ UserAdmin.fieldsets += ("Additional ",
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'title',
                     'current_time', 'project_img', 'project_file', 'description']
+
+
+admin.site.register(Comment)
