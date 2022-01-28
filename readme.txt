@@ -1,7 +1,7 @@
 admin
 admin@gmail.com
-admin(name)
-12(password)
+admin
+12
 
 user1
 raj@gmail.com
@@ -10,8 +10,8 @@ xntkLDYm6l
 
 user2
 janny@gmail.com
-janny
-xntkLDYm6l
+janny      #username
+xntkLDYm6l #password
 
 user3
 manju@gmail.com
