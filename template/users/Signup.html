@@ -29,7 +29,7 @@ PMS:: Create Account
             {%endif%}
             <div class="form-group clearfix">
                 <label class="fancy-checkbox element-left">
-                    <input type="checkbox">
+                    <input type="checkbox" id="checkbox">
                     <span>Show Password</span>
                 </label>
             </div>
@@ -43,4 +43,27 @@ PMS:: Create Account
     </div>
 </div>
 <!-- END WRAPPER -->
+{% endblock %}
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    
+
+        $('#checkbox').on('click', function () {
+            
+            let passInput1 = $("#id_password1");
+            let passInput2 = $("#id_password2");
+            if (passInput1.attr('type') === 'password') {
+                passInput1.attr('type', 'text');
+                passInput2.attr('type', 'text');
+            } else {
+                passInput1.attr('type', 'password');
+                passInput2.attr('type', 'password');
+            }
+        })
+    })
+</script>
+
 {% endblock %}

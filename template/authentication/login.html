@@ -23,12 +23,7 @@ PMS:: Login
                 <input type="password" class="form-control" id="signin-password" value="" name="password"
                     placeholder="Password">
             </div>
-            <div class="form-group clearfix">
-                <label class="fancy-checkbox element-left">
-                    <input type="checkbox">
-                    <span>Remember me</span>
-                </label>
-            </div>
+            
             {% if error %}
             <small class="error-message"> {{error}}</small>
             {%else%}
@@ -41,6 +36,10 @@ PMS:: Login
             </div>
         </form>
     </div>
+    
+</div>
+<div class="">
+    {% include 'authentication/include/google.html' %}
 </div>
 <!-- END WRAPPER -->
 {% endblock %}
