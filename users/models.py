@@ -34,15 +34,15 @@ class CreateAccount(AbstractUser):
     bio = models.TextField(blank=True, null=True, default="student")
     country = models.CharField(
         blank=True, null=True, default="India", max_length=25)
-    github = models.URLField(max_length=200, blank=True, default="github.com")
-    fb = models.URLField(max_length=200, blank=True,
+    github = models.URLField(max_length=200, blank=True,null=True, default="github.com")
+    fb = models.URLField(max_length=200, blank=True, null=True,
                          default="www.facebook.com")
-    insta = models.URLField(max_length=200, blank=True,
+    insta = models.URLField(max_length=200, blank=True, null=True,
                             default="instagram.com")
     linkedin = models.URLField(
-        max_length=200, blank=True,   default="linkedin.com")
+        max_length=200, blank=True, null=True,   default="linkedin.com")
     website = models.URLField(
-        max_length=200, blank=True, default="myportfoilo.com")
+        max_length=200, blank=True, null=True, default="myportfoilo.com")
 
 
 class Project(models.Model):

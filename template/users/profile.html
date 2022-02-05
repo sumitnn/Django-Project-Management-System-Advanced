@@ -114,7 +114,7 @@
       </div>
 
       <div class="col-md-8">
-
+{% if pobj %}
         {% for i in pobj %}
 
         <div class="card ">
@@ -164,7 +164,12 @@
 
         {% endfor %}
 
+{% else %}
+<div class="mt-5 p-5" style="background:white;"><h4 class="text-muted text-uppercase text-center">NO Project is Created BY YOU so Create New Project</small>
+</div>
 
+
+  {% endif %}
 
 
 

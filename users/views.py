@@ -32,8 +32,8 @@ def profileid(request, id):
     project = Project.objects.filter(user=u)
     projectuser = Project.objects.filter(user=u).first()
 
-    context['pobj'] = project if project else None
-    context['projecttuser'] = projectuser.user.username if projectuser else ''
+    context['pobj'] = project 
+    context['projecttuser'] = projectuser.user.username if projectuser else None
     context['projecttdetails'] = projectuser
 
     return render(request, "users/profile.html", context)
